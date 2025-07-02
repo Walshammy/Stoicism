@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Stoic Philosophy Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            background: #f8f9fa;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .view-toggle {
+            padding: 20px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e1e5e9;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .toggle-button {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .toggle-button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .toggle-button:hover {
+            background: #f8f9ff;
+        }
+
+        .toggle-button.active:hover {
+            background: #5a6fd8;
+        }
+
+        .controls {
+            padding: 25px 30px;
+            border-bottom: 1px solid #e1e5e9;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            background: #fff;
+        }
+
+        .filter-button {
+            padding: 10px 18px;
+            border: 2px solid #e1e5e9;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .filter-button:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: scale(1.02);
+        }
+
+        .filter-button.active:hover {
+            background: #5a6fd8;
+        }
+
+        .search-box {
+            padding: 10px 18px;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.9rem;
+            min-width: 250px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .legend {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Timeline View Styles */
+        .timeline-view {
+            display: block;
+        }
+
+        .timeline-container {
+            padding: 40px 30px;
+            overflow-x: auto;
+            background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            min-width: 1200px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 250px;
+            left: 60px;
+            right: 60px;
+            height: 6px;
+            background: linear-gradient(90deg, #8B4513 0%, #8B4513 25%, #DAA520 25%, #DAA520 60%, #4682B4 60%, #4682B4 100%);
+            border-radius: 3px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .period-marker {
+            position: absolute;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.95);
+            border: 3px solid #2c3e50;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #2c3e50;
+            transform: translateX(-50%);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            text-align: center;
+            line-height: 1.3;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .philosopher {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 15;
+            transform: translateX(-50%);
+        }
+
+        .philosopher-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .philosopher-name-label {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(50, 50, 50, 0.9);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 20;
+            backdrop-filter: blur(5px);
+        }
+
+        .philosopher:hover .philosopher-name-label {
+            opacity: 1;
+        }
+
+        .philosopher:hover .philosopher-dot {
+            transform: scale(1.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* List View Styles */
+        .list-view {
+            display: none;
+            padding: 30px;
+            background: white;
+        }
+
+        .period-section {
+            margin-bottom: 50px;
+        }
+
+        .period-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+
+        .early-stoa .period-header { border-bottom-color: #8B4513; }
+        .middle-stoa .period-header { border-bottom-color: #DAA520; }
+        .late-stoa .period-header { border-bottom-color: #4682B4; }
+
+        .period-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .early-stoa .period-icon { background: #8B4513; }
+        .middle-stoa .period-icon { background: #DAA520; }
+        .late-stoa .period-icon { background: #4682B4; }
+
+        .period-title h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #2e2e2e;
+        }
+
+        .period-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .philosophers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+        }
+
+        .philosopher-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            cursor: pointer;
+        }
+
+        .philosopher-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .philosopher-card.non-stoic { border-left-color: #95a5a6; }
+        .philosopher-card.stoic { border-left-color: #e74c3c; }
+        .philosopher-card.head-of-stoa { border-left-color: #f39c12; }
+
+        .philosopher-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .philosopher-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .non-stoic .philosopher-avatar { background: #95a5a6; }
+        .stoic .philosopher-avatar { background: #e74c3c; }
+        .head-of-stoa .philosopher-avatar { background: #f39c12; }
+
+        .philosopher-name h3 {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+            color: #2e2e2e;
+        }
+
+        .philosopher-dates {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .philosopher-role {
+            background: rgba(0,0,0,0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .see-more-btn {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .see-more-btn:hover {
+            background: #5a6fd8;
+            transform: scale(1.05);
+        }
+
+        /* Color coding */
+        .non-stoic .philosopher-dot {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+
+        .stoic .philosopher-dot {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .head-of-stoa .philosopher-dot {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.3), 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 30px 30px 20px 30px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .modal-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 3px solid #e1e5e9;
+            flex-shrink: 0;
+        }
+
+        .modal-image.placeholder {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .modal-text-content {
+            flex-grow: 1;
+        }
+
+        .modal-philosopher-type {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .modal-philosopher-type.non-stoic {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .modal-philosopher-type.stoic {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .modal-philosopher-type.head-of-stoa {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .modal-dates {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 25px 30px 30px 30px;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .wikipedia-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+        }
+
+        .wikipedia-section h3 {
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wikipedia-text {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .wikipedia-link {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .wikipedia-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .wikipedia-link a:hover {
+            text-decoration: underline;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .filtered-out {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline-container {
+                padding: 30px 20px;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .modal-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .philosophers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Enhanced Stoic Philosophy Timeline</h1>
+            <p>From Ancient Greece to Late Roman Stoicism (470 BCE - 300 CE)</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">24</span>
+                    <span class="stat-label">Philosophers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Heads of Stoa</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">770</span>
+                    <span class="stat-label">Years Covered</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-toggle">
+            <button class="toggle-button active" data-view="timeline">Timeline View</button>
+            <button class="toggle-button" data-view="list">Detailed List View</button>
+        </div>
+        
+        <div class="controls">
+            <button class="filter-button active" data-filter="all">All Philosophers</button>
+            <button class="filter-button" data-filter="stoic">Stoics Only</button>
+            <button class="filter-button" data-filter="head-of-stoa">Heads of Stoa</button>
+            <button class="filter-button" data-filter="non-stoic">Influences</button>
+            <input type="text" class="search-box" placeholder="Search philosophers..." id="searchBox">
+            <div style="margin-left: auto; color: #666; font-size: 0.9rem;">
+                💡 Click any philosopher to learn more
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: linear-gradient(135deg, #95a5a6, #7f8c8d);"></div>
+                <span>Non-Stoic Philosophers & Influences</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                <span>Stoic Philosophers</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: linear-gradient(135deg, #f39c12, #e67e22); box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.3);"></div>
+                <span>Heads of the Stoa (Athens)</span>
+            </div>
+        </div>
+        
+        <!-- Timeline View -->
+        <div class="timeline-view" id="timelineView">
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Period Markers -->
+                    <div class="period-marker" style="left: 25%; top: 120px;">
+                        <div>Early Stoa</div>
+                        <div style="font-size: 0.75rem; opacity: 0.8;">300-150 BCE</div>
+                    </div>
+                    <div class="period-marker" style="left: 42.5%; top: 380px;">
+                        <div>Middle Stoa</div>
+                        <div style="font-size: 0.75rem; opacity: 0.8;">150-55 BCE</div>
+                    </div>
+                    <div class="period-marker" style="left: 72.5%; top: 120px;">
+                        <div>Late (Roman) Stoa</div>
+                        <div style="font-size: 0.75rem; opacity: 0.8;">55 BCE - 300 CE</div>
+                    </div>
+                    
+                    <!-- Philosophers positioned chronologically -->
+                    
+                    <!-- Pre-Stoic Influences -->
+                    <div class="philosopher non-stoic" style="left: 8%; top: 241px;" data-name="socrates" data-wikipedia="Socrates">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Socrates</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 12%; top: 241px;" data-name="plato" data-wikipedia="Plato">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Plato</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 15%; top: 241px;" data-name="diogenes-sinope" data-wikipedia="Diogenes">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Diogenes of Sinope</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 17%; top: 241px;" data-name="aristotle" data-wikipedia="Aristotle">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Aristotle</div>
+                    </div>
+                    
+                    <!-- Early Stoa -->
+                    <div class="philosopher head-of-stoa" style="left: 22%; top: 241px;" data-name="zeno" data-wikipedia="Zeno_of_Citium">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Zeno of Citium</div>
+                    </div>
+                    
+                    <div class="philosopher head-of-stoa" style="left: 25%; top: 241px;" data-name="cleanthes" data-wikipedia="Cleanthes">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Cleanthes</div>
+                    </div>
+                    
+                    <div class="philosopher head-of-stoa" style="left: 29%; top: 241px;" data-name="chrysippus" data-wikipedia="Chrysippus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Chrysippus</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 21%; top: 241px;" data-name="epicurus" data-wikipedia="Epicurus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Epicurus</div>
+                    </div>
+                    
+                    <!-- Middle Stoa -->
+                    <div class="philosopher head-of-stoa" style="left: 37%; top: 241px;" data-name="diogenes-babylon" data-wikipedia="Diogenes_of_Babylon">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Diogenes of Babylon</div>
+                    </div>
+                    
+                    <div class="philosopher head-of-stoa" style="left: 40%; top: 241px;" data-name="antipater" data-wikipedia="Antipater_of_Tarsus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Antipater of Tarsus</div>
+                    </div>
+                    
+                    <div class="philosopher head-of-stoa" style="left: 42%; top: 241px;" data-name="panaetius" data-wikipedia="Panaetius">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Panaetius</div>
+                    </div>
+                    
+                    <div class="philosopher stoic" style="left: 47%; top: 241px;" data-name="posidonius" data-wikipedia="Posidonius">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Posidonius</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 44%; top: 241px;" data-name="cicero" data-wikipedia="Cicero">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Cicero</div>
+                    </div>
+                    
+                    <!-- Late (Roman) Stoa -->
+                    <div class="philosopher stoic" style="left: 53%; top: 241px;" data-name="seneca" data-wikipedia="Seneca_the_Younger">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Seneca</div>
+                    </div>
+                    
+                    <div class="philosopher stoic" style="left: 56%; top: 241px;" data-name="musonius" data-wikipedia="Musonius_Rufus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Musonius Rufus</div>
+                    </div>
+                    
+                    <div class="philosopher stoic" style="left: 60%; top: 241px;" data-name="epictetus" data-wikipedia="Epictetus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Epictetus</div>
+                    </div>
+                    
+                    <div class="philosopher stoic" style="left: 67%; top: 241px;" data-name="marcus" data-wikipedia="Marcus_Aurelius">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Marcus Aurelius</div>
+                    </div>
+                    
+                    <div class="philosopher stoic" style="left: 62%; top: 241px;" data-name="hierocles" data-wikipedia="Hierocles_of_Alexandria">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Hierocles</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 58%; top: 241px;" data-name="plutarch" data-wikipedia="Plutarch">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Plutarch</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 64%; top: 241px;" data-name="sextus" data-wikipedia="Sextus_Empiricus">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Sextus Empiricus</div>
+                    </div>
+                    
+                    <div class="philosopher non-stoic" style="left: 69%; top: 241px;" data-name="galen" data-wikipedia="Galen">
+                        <div class="philosopher-dot"></div>
+                        <div class="philosopher-name-label">Galen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- List View -->
+        <div class="list-view" id="listView">
+            <!-- Early Stoa (300-150 BCE) -->
+            <div class="period-section early-stoa">
+                <div class="period-header">
+                    <div class="period-icon">I</div>
+                    <div class="period-title">
+                        <h2>Early Stoa</h2>
+                        <div class="period-subtitle">300-150 BCE • Foundation & Core Doctrine Development</div>
+                    </div>
+                </div>
+                
+                <div class="philosophers-grid">
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="socrates" data-wikipedia="Socrates">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">S</div>
+                            <div class="philosopher-name">
+                                <h3>Socrates</h3>
+                                <div class="philosopher-dates">c. 470-399 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Influence</div>
+                        </div>
+                        <div class="philosopher-description">
+                            The foundational figure whose teachings on virtue and the examined life profoundly influenced all subsequent philosophical schools, including Stoicism.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="zeno" data-wikipedia="Zeno_of_Citium">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Z</div>
+                            <div class="philosopher-name">
+                                <h3>Zeno of Citium</h3>
+                                <div class="philosopher-dates">c. 335-263 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Founder</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Founder of Stoicism who established the school in Athens around 300 BCE. Combined Cynic ethics with academic philosophy to create systematic Stoic doctrine.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="cleanthes" data-wikipedia="Cleanthes">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">C</div>
+                            <div class="philosopher-name">
+                                <h3>Cleanthes of Assos</h3>
+                                <div class="philosopher-dates">c. 331-232 BCE</div>
+                            </div>
+                            <div class="philosopher-role">2nd Head</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Second head of the Stoa who developed Stoic physics and theology. Known for his devotional approach to philosophy and poetic writings.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="chrysippus" data-wikipedia="Chrysippus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Ch</div>
+                            <div class="philosopher-name">
+                                <h3>Chrysippus of Soli</h3>
+                                <div class="philosopher-dates">c. 280-207 BCE</div>
+                            </div>
+                            <div class="philosopher-role">3rd Head</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Third head of the Stoa, considered the "second founder" of Stoicism. Systematized Stoic doctrine and wrote over 700 works defending Stoic philosophy.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="epicurus" data-wikipedia="Epicurus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">E</div>
+                            <div class="philosopher-name">
+                                <h3>Epicurus</h3>
+                                <div class="philosopher-dates">c. 341-270 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Rival School</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Founder of Epicureanism, the main philosophical rival to Stoicism. Advocated for pleasure as the highest good and atomistic materialism.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Stoa (150-55 BCE) -->
+            <div class="period-section middle-stoa">
+                <div class="period-header">
+                    <div class="period-icon">II</div>
+                    <div class="period-title">
+                        <h2>Middle Stoa</h2>
+                        <div class="period-subtitle">150-55 BCE • Adaptation & Roman Integration</div>
+                    </div>
+                </div>
+                
+                <div class="philosophers-grid">
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="diogenes-babylon" data-wikipedia="Diogenes_of_Babylon">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">D</div>
+                            <div class="philosopher-name">
+                                <h3>Diogenes of Babylon</h3>
+                                <div class="philosopher-dates">c. 240-152 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Head of Stoa</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Leading Stoic who helped introduce Stoicism to Rome through diplomatic missions. Emphasized practical ethics and rhetoric.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="antipater" data-wikipedia="Antipater_of_Tarsus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">A</div>
+                            <div class="philosopher-name">
+                                <h3>Antipater of Tarsus</h3>
+                                <div class="philosopher-dates">2nd century BCE</div>
+                            </div>
+                            <div class="philosopher-role">Head of Stoa</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Head of the Stoa who bridged Early and Middle Stoicism. Developed more nuanced views on emotions and practical wisdom.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card head-of-stoa" data-category="head-of-stoa" data-name="panaetius" data-wikipedia="Panaetius">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">P</div>
+                            <div class="philosopher-name">
+                                <h3>Panaetius of Rhodes</h3>
+                                <div class="philosopher-dates">c. 185-109 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Head of Stoa</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture. Influenced Cicero and introduced more humanistic elements.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="posidonius" data-wikipedia="Posidonius">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Po</div>
+                            <div class="philosopher-name">
+                                <h3>Posidonius of Apamea</h3>
+                                <div class="philosopher-dates">135-55 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Stoic Polymath</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Brilliant polymath who integrated scientific research with Stoic philosophy. Influenced both Cicero and later Roman Stoics.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="cicero" data-wikipedia="Cicero">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Ci</div>
+                            <div class="philosopher-name">
+                                <h3>Cicero</h3>
+                                <div class="philosopher-dates">106-43 BCE</div>
+                            </div>
+                            <div class="philosopher-role">Academic/Eclectic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Roman orator and philosopher who synthesized Greek philosophy for Roman audiences. Though not strictly Stoic, heavily influenced by Stoicism.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Late (Roman) Stoa (55 BCE - 300 CE) -->
+            <div class="period-section late-stoa">
+                <div class="period-header">
+                    <div class="period-icon">III</div>
+                    <div class="period-title">
+                        <h2>Late (Roman) Stoa</h2>
+                        <div class="period-subtitle">55 BCE - 300 CE • Practical Ethics & Personal Development</div>
+                    </div>
+                </div>
+                
+                <div class="philosophers-grid">
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="seneca" data-wikipedia="Seneca_the_Younger">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Se</div>
+                            <div class="philosopher-name">
+                                <h3>Seneca the Younger</h3>
+                                <div class="philosopher-dates">c. 1-65 CE</div>
+                            </div>
+                            <div class="philosopher-role">Roman Stoic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Roman statesman, playwright, and Stoic philosopher. Advisor to Emperor Nero and one of the most influential Stoic writers.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="musonius" data-wikipedia="Musonius_Rufus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">M</div>
+                            <div class="philosopher-name">
+                                <h3>Musonius Rufus</h3>
+                                <div class="philosopher-dates">1st century CE</div>
+                            </div>
+                            <div class="philosopher-role">Roman Stoic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Known as the "Roman Socrates," he emphasized practical philosophy and was renowned for his moral character and teaching method.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="epictetus" data-wikipedia="Epictetus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Ep</div>
+                            <div class="philosopher-name">
+                                <h3>Epictetus</h3>
+                                <div class="philosopher-dates">c. 50-130 CE</div>
+                            </div>
+                            <div class="philosopher-role">Stoic Teacher</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Former slave who became one of the greatest Stoic teachers. Focused on practical ethics and the discipline of desire.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="marcus" data-wikipedia="Marcus_Aurelius">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">MA</div>
+                            <div class="philosopher-name">
+                                <h3>Marcus Aurelius</h3>
+                                <div class="philosopher-dates">121-180 CE</div>
+                            </div>
+                            <div class="philosopher-role">Philosopher-Emperor</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Roman Emperor and Stoic philosopher, known as one of the "Five Good Emperors." His personal journal became the "Meditations."
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="hierocles" data-wikipedia="Hierocles_of_Alexandria">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">H</div>
+                            <div class="philosopher-name">
+                                <h3>Hierocles</h3>
+                                <div class="philosopher-dates">early 2nd century CE</div>
+                            </div>
+                            <div class="philosopher-role">Stoic Teacher</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Stoic philosopher known for his theory of "circles of concern" and practical ethical teachings.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="plutarch" data-wikipedia="Plutarch">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">Pl</div>
+                            <div class="philosopher-name">
+                                <h3>Plutarch</h3>
+                                <div class="philosopher-dates">c. 50-120 CE</div>
+                            </div>
+                            <div class="philosopher-role">Critic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Platonist philosopher and biographer who wrote several works critiquing Stoic philosophy, particularly their ethics and physics.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="sextus" data-wikipedia="Sextus_Empiricus">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">SE</div>
+                            <div class="philosopher-name">
+                                <h3>Sextus Empiricus</h3>
+                                <div class="philosopher-dates">2nd century CE</div>
+                            </div>
+                            <div class="philosopher-role">Skeptic Critic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Pyrrhonian skeptic who wrote detailed critiques of Stoic logic and epistemology. His works preserve many Stoic arguments while attempting to refute them.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+
+                    <div class="philosopher-card non-stoic" data-category="non-stoic" data-name="galen" data-wikipedia="Galen">
+                        <div class="philosopher-header">
+                            <div class="philosopher-avatar">G</div>
+                            <div class="philosopher-name">
+                                <h3>Galen</h3>
+                                <div class="philosopher-dates">c. 130-201 CE</div>
+                            </div>
+                            <div class="philosopher-role">Medical Critic</div>
+                        </div>
+                        <div class="philosopher-description">
+                            Physician and philosopher who critiqued Stoic psychology and emotional theory from a medical perspective. His anatomical work challenged Stoic physics.
+                        </div>
+                        <button class="see-more-btn">See More & Wikipedia Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Modal with Wikipedia Integration -->
+    <div id="philosopherModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <img id="modalImage" class="modal-image" alt="Philosopher portrait" style="display: none;">
+                <div id="modalImagePlaceholder" class="modal-image placeholder">?</div>
+                <div class="modal-text-content">
+                    <div class="modal-philosopher-type" id="modalType"></div>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-dates" id="modalDates"></div>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Philosopher data (same as before)
+        const philosopherData = {
+            'socrates': {
+                name: 'Socrates',
+                dates: 'c. 470-399 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Foundational Influence',
+                description: 'The foundational figure whose teachings on virtue and the examined life profoundly influenced all subsequent philosophical schools, including Stoicism.',
+                contributions: 'Developed the Socratic method of questioning, established virtue ethics as a philosophical framework, coined "virtue is knowledge," and promoted moral intellectualism. His emphasis on self-examination ("the unexamined life is not worth living") became central to Stoic practice.',
+                works: ['Socratic Dialogues (recorded by Plato)', 'Apology (via Plato)', 'Crito (via Plato)'],
+                connections: [
+                    'Students: Plato, Antisthenes (founder of Cynicism)',
+                    'Influence: All major philosophical schools including Stoicism',
+                    'Method: Socratic questioning adopted by Stoics for self-examination'
+                ]
+            },
+            'plato': {
+                name: 'Plato',
+                dates: 'c. 430-347 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Philosophical Influence',
+                description: 'Student of Socrates who founded the Academy and developed systematic philosophy. His theory of Forms and emphasis on virtue influenced Stoic metaphysics and ethics.',
+                contributions: 'Created the Academy, developed the theory of Forms, systematic philosophy, political theory, and preserved Socratic teachings. His "Phaedo" influenced Stoic views on death and the soul.',
+                works: ['The Republic', 'Phaedo', 'Apology', 'Laws', 'Timaeus'],
+                connections: [
+                    'Teacher: Socrates',
+                    'Student: Aristotle',
+                    'Influence: Provided philosophical framework later adapted by Stoics'
+                ]
+            },
+            'diogenes-sinope': {
+                name: 'Diogenes of Sinope',
+                dates: 'c. 400-325 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Cynic Influence',
+                description: 'Founder of Cynicism whose radical lifestyle and philosophy of living according to nature directly influenced early Stoicism, particularly through his student Crates.',
+                contributions: 'Developed Cynic philosophy emphasizing virtue, self-sufficiency, and living according to nature. His radical asceticism and rejection of social conventions influenced Stoic ethics.',
+                works: ['Letters (attributed)', 'Dialogues (lost)'],
+                connections: [
+                    'School: Founder of Cynicism',
+                    'Student: Crates of Thebes (teacher of Zeno)',
+                    'Legacy: Cynic ethics incorporated into Stoicism'
+                ]
+            },
+            'aristotle': {
+                name: 'Aristotle',
+                dates: 'c. 383-322 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Logical Influence',
+                description: 'Student of Plato who developed systematic logic and ethics. His logical methods and virtue ethics significantly influenced Stoic philosophy, particularly Chrysippus.',
+                contributions: 'Created formal logic, systematic ethics, political theory, and natural philosophy. His logical methods were adopted and refined by Stoic logicians like Chrysippus.',
+                works: ['Nicomachean Ethics', 'Politics', 'Organon', 'Metaphysics'],
+                connections: [
+                    'Teacher: Plato',
+                    'Influence: Logical methods adopted by Chrysippus',
+                    'Ethics: Virtue ethics framework used by Stoics'
+                ]
+            },
+            'epicurus': {
+                name: 'Epicurus',
+                dates: 'c. 341-270 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Rival School',
+                description: 'Founder of Epicureanism, the main philosophical rival to Stoicism. His emphasis on pleasure as the highest good directly opposed Stoic virtue ethics.',
+                contributions: 'Founded Epicureanism, developed hedonistic ethics, atomistic physics, and the pleasure principle. His "Garden" competed with the Stoic school for students.',
+                works: ['Letter to Menoeceus', 'Principal Doctrines', 'Letter to Herodotus'],
+                connections: [
+                    'School: Founded Epicureanism (rival to Stoicism)',
+                    'Opposition: Pleasure vs. virtue as highest good',
+                    'Influence: Stoics often defined themselves against Epicurean ideas'
+                ]
+            },
+            'zeno': {
+                name: 'Zeno of Citium',
+                dates: 'c. 335-263 BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Founder of Stoicism',
+                description: 'Phoenician philosopher who founded Stoicism around 300 BCE in Athens. After being shipwrecked and losing his fortune, he studied philosophy and created a new school combining Cynic ethics with systematic philosophy.',
+                contributions: 'Founded the Stoic school in the Stoa Poikile (Painted Porch), established the four cardinal virtues, developed early Stoic physics and logic, created the ideal of the sage, and established virtue as the only true good.',
+                works: ['Republic', 'On the Nature of Man', 'On Emotions', 'On Ethics', 'On the Universe'],
+                connections: [
+                    'Teacher: Crates of Thebes (Cynic philosopher)',
+                    'Students: Cleanthes, Aristo of Chios, Persaeus',
+                    'School: Founded Stoicism at the Stoa Poikile in Athens'
+                ]
+            },
+            'cleanthes': {
+                name: 'Cleanthes of Assos',
+                dates: 'c. 331-232 BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Second Head of the Stoa',
+                description: 'Second head of the Stoic school who developed Stoic theology and physics. Known for his devotional approach to philosophy and for working as a night laborer to pay for his studies.',
+                contributions: 'Developed Stoic theology and cosmic theory, emphasized divine providence and cosmic sympathy, created religious poetry expressing Stoic beliefs, and defended Stoic physics against critics.',
+                works: ['Hymn to Zeus', 'On Time', 'Physics', 'On the Gods', 'Interpretations'],
+                connections: [
+                    'Teacher: Zeno of Citium',
+                    'Student: Chrysippus of Soli',
+                    'Legacy: Developed theological aspects of Stoicism'
+                ]
+            },
+            'chrysippus': {
+                name: 'Chrysippus of Soli',
+                dates: 'c. 280-207 BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Third Head & Second Founder',
+                description: 'Third head of the Stoa, often called the "second founder" of Stoicism. He systematized Stoic doctrine and wrote over 700 works defending and developing Stoic philosophy.',
+                contributions: 'Systematized Stoic logic and made it rival Aristotelian logic, developed compatibilist theory of free will, refined Stoic emotional theory, created detailed dialectical methods, and defended Stoicism against Academic skeptics.',
+                works: ['On Logic', 'On Emotions', 'Ethics', 'Physics', 'On Fate', 'On Providence'],
+                connections: [
+                    'Teacher: Cleanthes of Assos',
+                    'Achievement: Wrote over 700 works (mostly lost)',
+                    'Legacy: Systematized all major Stoic doctrines'
+                ]
+            },
+            'diogenes-babylon': {
+                name: 'Diogenes of Babylon',
+                dates: 'c. 240-152 BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Head of the Stoa',
+                description: 'Stoic philosopher who led the famous Athenian embassy to Rome in 155 BCE, helping to introduce Stoicism to Roman culture. Emphasized practical ethics and rhetoric.',
+                contributions: 'Introduced Stoicism to Rome through diplomatic missions, developed rhetoric theory within Stoic framework, emphasized practical applications of Stoic ethics, and influenced Roman politicians and intellectuals.',
+                works: ['On Music', 'Dialectical Art', 'On Voice', 'Rhetoric'],
+                connections: [
+                    'Mission: Led Athenian Embassy to Rome (155 BCE)',
+                    'Student: Antipater of Tarsus',
+                    'Legacy: Bridge between Greek and Roman Stoicism'
+                ]
+            },
+            'antipater': {
+                name: 'Antipater of Tarsus',
+                dates: '2nd century BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Head of the Stoa',
+                description: 'Head of the Stoa who bridged Early and Middle Stoicism. Known for developing more nuanced views on emotions and practical wisdom.',
+                contributions: 'Refined Stoic emotional theory, developed practical wisdom concepts, provided dialectical refinements to Stoic logic, and trained the next generation of Stoic leaders.',
+                works: ['On Emotions', 'On Duties', 'Dialectical Works'],
+                connections: [
+                    'Teacher: Diogenes of Babylon',
+                    'Student: Panaetius of Rhodes',
+                    'Role: Bridged Early and Middle Stoicism'
+                ]
+            },
+            'panaetius': {
+                name: 'Panaetius of Rhodes',
+                dates: 'c. 185-109 BCE',
+                type: 'head-of-stoa',
+                typeLabel: 'Head of the Stoa',
+                description: 'Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture. He influenced Cicero and introduced more humanistic elements to Stoic philosophy.',
+                contributions: 'Adapted Stoicism for Roman culture, influenced Roman political theory, developed practical ethics for public life, emphasized human dignity and social responsibilities.',
+                works: ['On Duties', 'On Providence', 'On Philosophy', 'On the Constitution'],
+                connections: [
+                    'Teacher: Antipater of Tarsus',
+                    'Influenced: Cicero, Scipio Aemilianus',
+                    'Student: Posidonius of Apamea'
+                ]
+            },
+            'posidonius': {
+                name: 'Posidonius of Apamea',
+                dates: '135-55 BCE',
+                type: 'stoic',
+                typeLabel: 'Stoic Polymath',
+                description: 'Brilliant polymath who integrated scientific research with Stoic philosophy. His work in geography, astronomy, and psychology influenced both Cicero and later Roman Stoics.',
+                contributions: 'Advanced scientific methodology within Stoic framework, developed geographical and astronomical theories, refined psychology and emotion theory, influenced Roman intellectual culture.',
+                works: ['On the Ocean', 'Histories', 'On Emotions', 'Geography', 'On the Sun'],
+                connections: [
+                    'Teacher: Panaetius of Rhodes',
+                    'Students: Cicero, Pompey',
+                    'Legacy: Scientific approach to Stoicism'
+                ]
+            },
+            'cicero': {
+                name: 'Cicero',
+                dates: '106-43 BCE',
+                type: 'non-stoic',
+                typeLabel: 'Academic Skeptic & Synthesizer',
+                description: 'Roman orator, politician, and philosopher who synthesized Greek philosophy for Roman audiences. Though not strictly Stoic, he was heavily influenced by Stoicism and helped popularize it in Rome.',
+                contributions: 'Popularized Greek philosophy in Rome, developed natural law theory, created practical ethics for public life, and preserved many Stoic teachings in his works.',
+                works: ['De Officiis (On Duties)', 'Tusculan Disputations', 'De Finibus', 'De Natura Deorum'],
+                connections: [
+                    'Influenced by: Panaetius, Posidonius',
+                    'School: Academic Skepticism (eclectic approach)',
+                    'Legacy: Preserved and transmitted Stoic ideas'
+                ]
+            },
+            'seneca': {
+                name: 'Seneca the Younger',
+                dates: 'c. 1-65 CE',
+                type: 'stoic',
+                typeLabel: 'Roman Stoic Statesman',
+                description: 'Roman statesman, playwright, and Stoic philosopher who served as advisor to Emperor Nero. One of the most influential Stoic writers, focusing on practical ethics and personal development.',
+                contributions: 'Developed practical Stoic ethics for daily life, advanced theories on time management and emotional regulation, created literary works expressing Stoic themes, mentored through philosophical letters.',
+                works: ['Letters to Lucilius', 'On the Happy Life', 'On Anger', 'On Tranquility of Mind', 'Medea', 'Phaedra'],
+                connections: [
+                    'Role: Advisor to Emperor Nero',
+                    'Student: Lucilius (correspondent)',
+                    'Death: Forced suicide by Nero (65 CE)'
+                ]
+            },
+            'musonius': {
+                name: 'Musonius Rufus',
+                dates: '1st century CE',
+                type: 'stoic',
+                typeLabel: 'The Roman Socrates',
+                description: 'Known as the "Roman Socrates" for his emphasis on practical philosophy and moral character. He was renowned for his teaching method and was the teacher of Epictetus.',
+                contributions: 'Emphasized practical philosophy over theory, advocated for gender equality and women\'s education, promoted simple living and moral education, developed Socratic teaching methods within Stoicism.',
+                works: ['Discourses', 'On Women\'s Education', 'On Simple Living', 'Lectures'],
+                connections: [
+                    'Nickname: "The Roman Socrates"',
+                    'Student: Epictetus',
+                    'Exile: Banished by Nero, recalled by Galba'
+                ]
+            },
+            'epictetus': {
+                name: 'Epictetus',
+                dates: 'c. 50-130 CE',
+                type: 'stoic',
+                typeLabel: 'Stoic Teacher & Former Slave',
+                description: 'Born a slave who became one of the greatest Stoic teachers. His teachings, recorded by his student Arrian, focus on practical ethics and the famous dichotomy of control.',
+                contributions: 'Developed the dichotomy of control (what is "up to us" vs. "not up to us"), advanced theory of impressions and judgment, created practical exercises for moral development, emphasized personal freedom through philosophy.',
+                works: ['Discourses (4 books)', 'Enchiridion (Handbook)'],
+                connections: [
+                    'Teacher: Musonius Rufus',
+                    'Student: Arrian (recorded his teachings)',
+                    'Background: Born a slave, gained freedom through philosophy'
+                ]
+            },
+            'marcus': {
+                name: 'Marcus Aurelius',
+                dates: '121-180 CE',
+                type: 'stoic',
+                typeLabel: 'Philosopher-Emperor',
+                description: 'Roman Emperor and Stoic philosopher, one of the "Five Good Emperors." His personal journal, the "Meditations," represents the pinnacle of practical Stoic philosophy.',
+                contributions: 'Applied Stoic principles to imperial leadership, developed cosmic perspective and memento mori practices, created personal spiritual exercises, demonstrated Stoicism in action during plague and war.',
+                works: ['Meditations (personal journal)', 'Letters (mostly lost)'],
+                connections: [
+                    'Influenced by: Epictetus (through his Discourses)',
+                    'Teachers: Junius Rusticus, Apollonius',
+                    'Role: Roman Emperor (161-180 CE), last of "Five Good Emperors"'
+                ]
+            },
+            'hierocles': {
+                name: 'Hierocles',
+                dates: 'early 2nd century CE',
+                type: 'stoic',
+                typeLabel: 'Stoic Ethicist',
+                description: 'Stoic philosopher known for his theory of "circles of concern" (oikeiosis) and practical ethical teachings. His work bridged personal and social ethics.',
+                contributions: 'Developed circles of concern theory showing how to extend care from self to family to community to humanity, created practical ethical exercises, advanced Stoic social theory.',
+                works: ['Elements of Ethics', 'On Duties', 'Ethical Lectures'],
+                connections: [
+                    'Theory: Circles of concern (oikeiosis)',
+                    'Focus: Social ethics and duty',
+                    'Legacy: Influenced later Stoic social thought'
+                ]
+            },
+            'plutarch': {
+                name: 'Plutarch',
+                dates: 'c. 50-120 CE',
+                type: 'non-stoic',
+                typeLabel: 'Platonist Critic',
+                description: 'Platonist philosopher and biographer who wrote several works critiquing Stoic philosophy, particularly their ethics and physics. His criticisms helped clarify Stoic positions.',
+                contributions: 'Created biographical method combining history and moral philosophy, critiqued Stoic ethics and physics, preserved information about Stoic doctrines through his criticisms.',
+                works: ['Parallel Lives', 'Moralia', 'Against Colotes', 'On Stoic Self-Contradictions'],
+                connections: [
+                    'School: Platonist (Middle Platonism)',
+                    'Role: Critic of Stoicism',
+                    'Legacy: Preserved Stoic teachings through criticism'
+                ]
+            },
+            'sextus': {
+                name: 'Sextus Empiricus',
+                dates: '2nd century CE',
+                type: 'non-stoic',
+                typeLabel: 'Skeptic Critic',
+                description: 'Pyrrhonian skeptic who wrote detailed critiques of Stoic logic and epistemology. His works preserve many Stoic arguments while attempting to refute them.',
+                contributions: 'Developed Pyrrhonian skepticism, critiqued Stoic logic and epistemology, preserved Stoic arguments in his refutations, advanced skeptical methodology.',
+                works: ['Outlines of Pyrrhonism', 'Against the Mathematicians', 'Against the Logicians'],
+                connections: [
+                    'School: Pyrrhonian Skepticism',
+                    'Target: Stoic logic and epistemology',
+                    'Legacy: Preserved Stoic arguments through criticism'
+                ]
+            },
+            'galen': {
+                name: 'Galen',
+                dates: 'c. 130-201 CE',
+                type: 'non-stoic',
+                typeLabel: 'Medical Critic',
+                description: 'Physician and philosopher who critiqued Stoic psychology and emotional theory from a medical perspective. His anatomical work challenged Stoic physics.',
+                contributions: 'Advanced medical knowledge and anatomy, critiqued Stoic psychology from medical perspective, developed alternative theories of emotions and cognition.',
+                works: ['On the Doctrines of Hippocrates and Plato', 'On the Soul\'s Dependence on the Body', 'Medical works'],
+                connections: [
+                    'Profession: Physician to emperors',
+                    'Critique: Stoic psychology and emotion theory',
+                    'Method: Medical approach to philosophical questions'
+                ]
+            }
+        };
+
+        // Modal functionality with Wikipedia integration
+        const modal = document.getElementById('philosopherModal');
+        const closeBtn = document.querySelector('.close');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDates = document.getElementById('modalDates');
+        const modalType = document.getElementById('modalType');
+        const modalBody = document.getElementById('modalBody');
+        const modalImage = document.getElementById('modalImage');
+        const modalImagePlaceholder = document.getElementById('modalImagePlaceholder');
+
+        // Wikipedia API functions
+        async function fetchWikipediaData(title) {
+            try {
+                // Fetch the main Wikipedia page content
+                const pageResponse = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+                const pageData = await pageResponse.json();
+                
+                // Get the first paragraph
+                const extract = pageData.extract || 'No Wikipedia summary available.';
+                
+                // Get the image
+                const imageUrl = pageData.thumbnail ? pageData.thumbnail.source : null;
+                
+                return {
+                    extract: extract,
+                    imageUrl: imageUrl,
+                    wikipediaUrl: `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`
+                };
+            } catch (error) {
+                console.error('Error fetching Wikipedia data:', error);
+                return {
+                    extract: 'Unable to load Wikipedia information.',
+                    imageUrl: null,
+                    wikipediaUrl: `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`
+                };
+            }
+        }
+
+        // Add click listeners to all philosophers
+        document.querySelectorAll('.philosopher, .philosopher-card, .see-more-btn').forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const name = element.dataset.name || element.closest('[data-name]').dataset.name;
+                const wikipediaTitle = element.dataset.wikipedia || element.closest('[data-wikipedia]').dataset.wikipedia;
+                showPhilosopherModal(name, wikipediaTitle);
+            });
+        });
+
+        async function showPhilosopherModal(name, wikipediaTitle) {
+            const data = philosopherData[name];
+            if (!data) return;
+
+            modalTitle.textContent = data.name;
+            modalDates.textContent = data.dates;
+            modalType.textContent = data.typeLabel;
+            modalType.className = `modal-philosopher-type ${data.type}`;
+
+            // Set placeholder image initially
+            modalImage.style.display = 'none';
+            modalImagePlaceholder.style.display = 'flex';
+            modalImagePlaceholder.textContent = data.name.charAt(0);
+
+            // Show initial content
+            modalBody.innerHTML = `
+                <div class="wikipedia-section">
+                    <h3>📖 From Wikipedia</h3>
+                    <div class="wikipedia-text">
+                        <div class="loading-spinner"></div> Loading Wikipedia information...
+                    </div>
+                    <div class="wikipedia-link" style="display: none;">
+                        <a href="#" target="_blank" rel="noopener noreferrer">Read more on Wikipedia →</a>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Historical Context & Significance</h3>
+                    <p>${data.description}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Key Contributions to Philosophy</h3>
+                    <p>${data.contributions}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Major Works</h3>
+                    <div class="works-list">
+                        ${data.works.map(work => `<div class="work-tag">${work}</div>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Connections & Legacy</h3>
+                    <div class="connections-list">
+                        ${data.connections.map(connection => {
+                            const [type, ...rest] = connection.split(': ');
+                            return `<div class="connection-item"><span class="connection-type">${type}:</span> ${rest.join(': ')}</div>`;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Fetch Wikipedia data
+            if (wikipediaTitle) {
+                try {
+                    const wikipediaData = await fetchWikipediaData(wikipediaTitle);
+                    
+                    // Update Wikipedia section
+                    const wikipediaSection = modalBody.querySelector('.wikipedia-section');
+                    const wikipediaText = wikipediaSection.querySelector('.wikipedia-text');
+                    const wikipediaLink = wikipediaSection.querySelector('.wikipedia-link');
+                    
+                    wikipediaText.innerHTML = wikipediaData.extract;
+                    wikipediaLink.style.display = 'block';
+                    wikipediaLink.querySelector('a').href = wikipediaData.wikipediaUrl;
+                    
+                    // Update image if available
+                    if (wikipediaData.imageUrl) {
+                        modalImage.src = wikipediaData.imageUrl;
+                        modalImage.alt = `Portrait of ${data.name}`;
+                        modalImage.onload = () => {
+                            modalImagePlaceholder.style.display = 'none';
+                            modalImage.style.display = 'block';
+                        };
+                        modalImage.onerror = () => {
+                            // Keep placeholder if image fails to load
+                            console.log('Failed to load image for', data.name);
+                        };
+                    }
+                } catch (error) {
+                    console.error('Error loading Wikipedia data:', error);
+                    const wikipediaText = modalBody.querySelector('.wikipedia-text');
+                    wikipediaText.innerHTML = 'Unable to load Wikipedia information at this time.';
+                }
+            }
+        }
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // View toggle functionality
+        const toggleButtons = document.querySelectorAll('.toggle-button');
+        const timelineView = document.getElementById('timelineView');
+        const listView = document.getElementById('listView');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const view = button.dataset.view;
+                if (view === 'timeline') {
+                    timelineView.style.display = 'block';
+                    listView.style.display = 'none';
+                } else {
+                    timelineView.style.display = 'none';
+                    listView.style.display = 'block';
+                }
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const philosophersTimeline = document.querySelectorAll('.philosopher');
+        const philosopherCards = document.querySelectorAll('.philosopher-card');
+        const searchBox = document.getElementById('searchBox');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.dataset.filter;
+                filterPhilosophers(filter);
+            });
+        });
+
+        function filterPhilosophers(filter) {
+            // Filter timeline view
+            philosophersTimeline.forEach(philosopher => {
+                const isVisible = filter === 'all' || philosopher.classList.contains(filter);
+                philosopher.classList.toggle('filtered-out', !isVisible);
+            });
+            
+            // Filter list view
+            philosopherCards.forEach(card => {
+                const isVisible = filter === 'all' || card.dataset.category === filter;
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+        }
+
+        // Search functionality
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search timeline view
+            philosophersTimeline.forEach(philosopher => {
+                const name = philosopher.dataset.name;
+                const data = philosopherData[name];
+                const searchText = data ? `${data.name} ${data.description} ${data.contributions}`.toLowerCase() : '';
+                
+                const isVisible = searchText.includes(searchTerm);
+                philosopher.classList.toggle('filtered-out', !isVisible);
+            });
+            
+            // Search list view
+            philosopherCards.forEach(card => {
+                const name = card.dataset.name;
+                const data = philosopherData[name];
+                const cardText = card.textContent.toLowerCase();
+                const searchText = data ? `${data.name} ${data.description} ${data.contributions}`.toLowerCase() : cardText;
+                
+                const isVisible = searchText.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+            
+            if (searchTerm) {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+            }
+        });
+
+        // Enhanced hover effects for timeline
+        philosophersTimeline.forEach(philosopher => {
+            philosopher.addEventListener('mouseenter', () => {
+                if (!philosopher.classList.contains('filtered-out')) {
+                    philosopher.style.transform = 'translateX(-50%) scale(1.1)';
+                    philosopher.style.zIndex = '25';
+                }
+            });
+            
+            philosopher.addEventListener('mouseleave', () => {
+                philosopher.style.transform = 'translateX(-50%) scale(1)';
+                philosopher.style.zIndex = '15';
+            });
+        });
+
+        // Enhanced hover effects for cards
+        philosopherCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.style.display !== 'none') {
+                    card.style.transform = 'translateY(-5px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Initialize with timeline view
+        document.addEventListener('DOMContentLoaded', () => {
+            timelineView.style.display = 'block';
+            listView.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
