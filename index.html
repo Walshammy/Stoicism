@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoic Philosophy Timeline - Interactive</title>
-    <meta name="description" content="Interactive timeline of Stoic philosophers from 470 BCE to 300 CE, optimized for Notion embedding.">
+    <title>Stoic Philosophy Timeline - Notion Embed</title>
     <style>
         * {
             margin: 0;
@@ -369,22 +368,6 @@
                 height: 12px;
             }
         }
-
-        /* Standalone page styles */
-        @media (min-width: 1200px) {
-            body {
-                padding: 20px;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-            }
-            
-            .container {
-                max-width: 1400px;
-                max-height: 600px;
-                border-radius: 12px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -735,27 +718,6 @@
         infoPanel.addEventListener('click', (e) => {
             e.stopPropagation();
         });
-
-        // Analytics (optional)
-        if (typeof gtag !== 'undefined') {
-            // Track filter usage
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    gtag('event', 'filter_click', {
-                        'filter_type': button.dataset.filter
-                    });
-                });
-            });
-
-            // Track philosopher clicks
-            philosophers.forEach(philosopher => {
-                philosopher.addEventListener('click', () => {
-                    gtag('event', 'philosopher_click', {
-                        'philosopher_name': philosopher.dataset.name
-                    });
-                });
-            });
-        }
     </script>
 </body>
 </html>
