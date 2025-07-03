@@ -885,20 +885,28 @@
             pointer-events: none;
         }
 
-        /* Responsive Design */
+        /* Mobile Timeline Adjustments */
         @media (max-width: 768px) {
             .hero {
-                padding: 40px 20px;
+                padding: 30px 15px;
             }
 
             .hero-stats {
-                gap: 20px;
+                gap: 15px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                min-width: 100px;
+                padding: 15px;
             }
 
             .navigation {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 15px;
+                padding: 20px 15px;
             }
 
             .search-container {
@@ -909,18 +917,103 @@
                 width: 100%;
             }
 
+            .filters {
+                padding: 0 15px 20px;
+                justify-content: center;
+            }
+
+            .timeline-view {
+                padding: 30px 15px;
+            }
+
+            /* Mobile Timeline - Stack vertically */
             .timeline-wrapper {
-                min-width: 800px;
+                height: auto;
+                min-height: 600px;
+            }
+
+            .year-scale {
+                display: none; /* Hide year scale on mobile for cleaner look */
+            }
+
+            .timeline-base {
+                top: 50px;
+                left: 20px;
+                right: 20px;
+                height: 4px;
+            }
+
+            .period-label {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+            }
+
+            .period-label.early {
+                top: 20px;
+                left: 15%;
+            }
+
+            .period-label.middle {
+                top: 100px;
+                left: 50%;
+            }
+
+            .period-label.late {
+                top: 20px;
+                left: 85%;
+            }
+
+            /* Adjust philosopher positions for mobile */
+            .philosopher {
+                top: 41px;
+            }
+
+            .philosopher-dot {
+                width: 12px;
+                height: 12px;
+                border: 2px solid white;
+            }
+
+            .philosopher:hover .philosopher-dot {
+                transform: scale(1.4);
+            }
+
+            .philosopher-tooltip {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+                bottom: 25px;
+            }
+
+            .philosopher-date {
+                top: 20px;
+                font-size: 0.6rem;
+                padding: 1px 4px;
             }
 
             .modal-content {
-                margin: 10% auto;
+                margin: 5% auto;
                 width: 95%;
+                max-height: 90vh;
             }
 
             .modal-header {
+                padding: 20px 20px 15px;
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
+            }
+
+            .modal-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-body {
+                padding: 20px;
             }
 
             .philosophers-grid {
@@ -930,18 +1023,92 @@
             .card-header {
                 flex-direction: column;
                 text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .timeline-wrapper {
-                min-width: 600px;
+                gap: 12px;
             }
 
             .period-header {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
+            }
+
+            .list-view {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .stat {
+                min-width: 80px;
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .timeline-wrapper {
+                min-height: 500px;
+            }
+
+            .period-label {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
+
+            .period-subtitle {
+                font-size: 0.6rem;
+            }
+
+            .philosopher-tooltip {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .filter-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .philosopher:hover .philosopher-tooltip {
+                opacity: 0; /* Hide tooltips on touch devices */
+            }
+
+            .philosopher:hover .philosopher-date {
+                opacity: 0; /* Hide date on touch devices */
+            }
+
+            .philosopher-dot {
+                width: 16px;
+                height: 16px;
+            }
+
+            .nav-button, .filter-pill, .learn-more {
+                min-height: 44px; /* Touch target size */
             }
         }
     </style>
