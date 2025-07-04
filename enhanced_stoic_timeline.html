@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stoic Philosophy Timeline</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:wght@400;600&display=swap');
         
         * {
             margin: 0;
@@ -14,49 +14,59 @@
         }
 
         :root {
-            --primary-text: #1a1a1a;
-            --secondary-text: #4a5568;
-            --accent-text: #718096;
-            --background: #f7fafc;
+            /* New Earth Tone Color Palette */
+            --background: #f5f3f0;  /* Light beige */
             --surface: #ffffff;
-            --border: #e2e8f0;
-            --subtle-border: #f1f5f9;
+            --surface-elevated: #fdfcfa;
             
-            /* Deep Green Color Palette */
-            --deep-green: #001D00;
-            --forest-green: #2D5016;
-            --sage-green: #87A96B;
-            --olive-green: #6B8E23;
-            --mint-green: #98D982;
+            /* Earth tone greens */
+            --sage-light: #9cae9a;
+            --sage-medium: #6b8065;
+            --forest-dark: #2d4a2b;
+            --forest-deeper: #1a2e19;
             
-            --early-stoic: var(--deep-green);
-            --middle-stoic: var(--forest-green);
-            --late-stoic: var(--olive-green);
+            /* Text colors */
+            --text-primary: #1a2e19;
+            --text-secondary: #4a5d48;
+            --text-tertiary: #6b8065;
+            --text-light: #9cae9a;
             
-            --influence: #718096;
-            --stoic: var(--sage-green);
-            --head: var(--mint-green);
+            /* Accent colors */
+            --accent-gold: #c49b61;
+            --accent-amber: #d4af37;
+            --accent-bronze: #8b6914;
             
-            --shadow-sm: 0 1px 2px 0 rgba(0, 29, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 29, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 29, 0, 0.1);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 29, 0, 0.25);
+            /* Semantic colors */
+            --influence: var(--accent-gold);
+            --stoic: var(--sage-medium);
+            --head: var(--accent-amber);
             
-            --border-radius: 12px;
-            --border-radius-lg: 16px;
+            /* Period colors */
+            --early-stoic: var(--forest-deeper);
+            --middle-stoic: var(--forest-dark);
+            --late-stoic: var(--sage-medium);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(26, 46, 25, 0.05);
+            --shadow: 0 4px 6px -1px rgba(26, 46, 25, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(26, 46, 25, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(26, 46, 25, 0.15);
+            
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--background);
-            color: var(--primary-text);
+            color: var(--text-primary);
             line-height: 1.6;
             font-size: 16px;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: min(1400px, 100vw);
+            max-width: min(1600px, 100vw);
             margin: 0 auto;
             background: var(--surface);
             box-shadow: var(--shadow-xl);
@@ -65,9 +75,9 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--deep-green) 0%, var(--forest-green) 100%);
+            background: linear-gradient(135deg, var(--forest-deeper) 0%, var(--forest-dark) 50%, var(--sage-medium) 100%);
             color: white;
-            padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 60px);
+            padding: clamp(60px, 10vw, 120px) clamp(30px, 6vw, 80px);
             position: relative;
             overflow: hidden;
         }
@@ -79,107 +89,134 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-            opacity: 0.3;
+            background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0.6;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 20px;
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 600;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 0%, var(--mint-green) 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-amber) 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            opacity: 0.9;
-            margin-bottom: 40px;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            opacity: 0.95;
+            margin-bottom: 50px;
             font-weight: 400;
             line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: clamp(30px, 6vw, 60px);
-            margin-top: 40px;
+            gap: clamp(40px, 8vw, 80px);
+            margin-top: 50px;
             flex-wrap: wrap;
         }
 
         .stat {
             text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 120px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            min-width: 140px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
         }
 
         .stat-number {
             display: block;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            color: var(--accent-amber);
         }
 
         .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            opacity: 0.9;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* Navigation */
         .navigation {
-            padding: 30px clamp(20px, 4vw, 60px);
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
+            padding: 40px clamp(30px, 6vw, 80px);
+            background: var(--surface-elevated);
+            border-bottom: 1px solid rgba(107, 128, 101, 0.1);
             display: flex;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .nav-button {
-            padding: 12px 24px;
-            border: 2px solid var(--border);
+            padding: 16px 32px;
+            border: 2px solid rgba(107, 128, 101, 0.2);
             background: var(--surface);
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--secondary-text);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(107, 128, 101, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-button:hover::before {
+            left: 100%;
         }
 
         .nav-button:hover {
-            border-color: var(--primary-text);
-            color: var(--primary-text);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow);
+            border-color: var(--sage-medium);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav-button.active {
-            background: var(--forest-green);
+            background: var(--sage-medium);
             color: white;
-            border-color: var(--forest-green);
+            border-color: var(--sage-medium);
+            box-shadow: var(--shadow);
         }
 
         .search-container {
@@ -188,119 +225,128 @@
         }
 
         .search-input {
-            padding: 12px 20px 12px 45px;
-            border: 2px solid var(--border);
+            padding: 16px 24px 16px 50px;
+            border: 2px solid rgba(107, 128, 101, 0.2);
             border-radius: 50px;
             outline: none;
-            font-size: 0.95rem;
-            width: 250px;
+            font-size: 1rem;
+            width: 280px;
             transition: all 0.3s ease;
             background: var(--surface);
+            color: var(--text-primary);
         }
 
         .search-input:focus {
-            border-color: var(--primary-text);
-            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+            border-color: var(--sage-medium);
+            box-shadow: 0 0 0 4px rgba(107, 128, 101, 0.1);
         }
 
         .search-icon {
             position: absolute;
-            left: 15px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--secondary-text);
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
         }
 
         /* Filter Pills */
         .filters {
-            padding: 0 clamp(20px, 4vw, 60px) 30px;
+            padding: 0 clamp(30px, 6vw, 80px) 40px;
             display: flex;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .filter-label {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            font-weight: 500;
-            margin-right: 10px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-right: 16px;
         }
 
         .filter-pill {
-            padding: 8px 16px;
-            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border: 1px solid rgba(107, 128, 101, 0.3);
             background: var(--surface);
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
         }
 
         .filter-pill:hover {
-            border-color: var(--primary-text);
+            border-color: var(--sage-medium);
             transform: translateY(-1px);
+            box-shadow: var(--shadow);
         }
 
         .filter-pill.active {
-            background: var(--forest-green);
+            background: var(--sage-medium);
             color: white;
-            border-color: var(--forest-green);
+            border-color: var(--sage-medium);
         }
 
         /* Legend */
         .legend {
-            padding: 30px clamp(20px, 4vw, 60px);
-            background: var(--subtle-border);
-            border-bottom: 1px solid var(--border);
+            padding: 40px clamp(30px, 6vw, 80px);
+            background: var(--background);
+            border-bottom: 1px solid rgba(107, 128, 101, 0.1);
             display: flex;
             justify-content: center;
-            gap: clamp(20px, 4vw, 40px);
+            gap: clamp(30px, 6vw, 60px);
             flex-wrap: wrap;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            font-weight: 500;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 12px 20px;
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
         }
 
         .legend-dot {
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: var(--shadow-sm);
+            border: 3px solid white;
+            box-shadow: var(--shadow);
         }
 
         .legend-dot.influence { background: var(--influence); }
         .legend-dot.stoic { background: var(--stoic); }
         .legend-dot.head { 
             background: var(--head); 
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2), var(--shadow-sm);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2), var(--shadow);
         }
 
-        /* Timeline View - Clean Vertical Design with Side Labels */
+        /* Timeline View */
         .timeline-view {
             display: block;
-            padding: 60px 20px;
-            background: var(--surface);
+            padding: 80px 40px;
+            background: var(--background);
+            min-height: 1400px;
         }
 
         .timeline-container {
             position: relative;
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .timeline-wrapper {
             position: relative;
-            padding: 40px 80px;
+            padding: 60px 200px;
+            height: 1400px;
         }
 
         /* Main timeline line */
@@ -309,88 +355,79 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 4px;
+            width: 6px;
             background: linear-gradient(180deg, 
                 var(--early-stoic) 0%, 
-                var(--early-stoic) 30%, 
-                var(--middle-stoic) 30%, 
-                var(--middle-stoic) 60%, 
-                var(--late-stoic) 60%, 
+                var(--early-stoic) 25%, 
+                var(--middle-stoic) 25%, 
+                var(--middle-stoic) 50%, 
+                var(--late-stoic) 50%, 
                 var(--late-stoic) 100%);
-            border-radius: 2px;
+            border-radius: 3px;
             transform: translateX(-50%);
             z-index: 1;
+            box-shadow: var(--shadow);
         }
 
-        /* Year markers on the LEFT */
+        /* Year markers - every 50 years */
         .year-marker {
             position: absolute;
-            right: 50%;
-            margin-right: 40px;
-            background: var(--surface);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--surface-elevated);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary-text);
+            color: var(--text-tertiary);
             box-shadow: var(--shadow);
             z-index: 10;
             white-space: nowrap;
-            text-align: right;
+            text-align: center;
+            border: 2px solid var(--background);
+            opacity: 0.8;
         }
 
         .year-marker.major {
-            background: var(--deep-green);
+            background: var(--sage-medium);
             color: white;
             font-size: 1rem;
-            padding: 12px 20px;
+            padding: 12px 24px;
             font-weight: 700;
+            border: 3px solid var(--background);
+            opacity: 1;
         }
 
-        /* Add connecting lines from years to timeline */
-        .year-marker::after {
-            content: '';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            width: 16px;
-            height: 2px;
-            background: var(--border);
-            transform: translateY(-50%);
-        }
-
-        .year-marker.major::after {
-            background: var(--deep-green);
-            width: 20px;
-            height: 3px;
-        }
-
-        /* Period labels on the RIGHT */
+        /* Period labels */
         .period-label {
             position: absolute;
-            left: 50%;
-            margin-left: 40px;
+            right: 30px;
             background: var(--surface);
-            border: 3px solid;
-            border-radius: var(--border-radius);
-            padding: 16px 24px;
+            border: 4px solid;
+            border-radius: var(--border-radius-lg);
+            padding: 24px 32px;
             text-align: left;
-            font-weight: 600;
-            box-shadow: var(--shadow-lg);
+            font-weight: 700;
+            box-shadow: var(--shadow-xl);
             z-index: 15;
-            min-width: 200px;
+            min-width: 240px;
+            transition: all 0.3s ease;
+        }
+
+        .period-label:hover {
+            transform: translateX(-10px);
         }
 
         .period-label.early {
             border-color: var(--early-stoic);
             color: var(--early-stoic);
-            top: 15%;
+            top: 20%;
         }
 
         .period-label.middle {
             border-color: var(--middle-stoic);
             color: var(--middle-stoic);
-            top: 45%;
+            top: 50%;
         }
 
         .period-label.late {
@@ -399,48 +436,41 @@
             top: 75%;
         }
 
-        /* Add connecting lines from periods to timeline */
-        .period-label::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            width: 16px;
-            height: 3px;
-            background: currentColor;
-            transform: translateY(-50%);
+        .period-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-family: 'Crimson Text', serif;
         }
 
         .period-subtitle {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             opacity: 0.7;
-            margin-top: 6px;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         /* Philosophers */
         .philosopher {
             position: absolute;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 20;
         }
 
         .philosopher.left {
             right: 50%;
-            margin-right: 30px;
+            margin-right: 80px;
         }
 
         .philosopher.right {
             left: 50%;
-            margin-left: 30px;
+            margin-left: 80px;
         }
 
         .philosopher-content {
             display: flex;
             align-items: center;
-            gap: 12px;
-            max-width: 280px;
+            gap: 16px;
+            max-width: 320px;
         }
 
         .philosopher.left .philosopher-content {
@@ -449,13 +479,13 @@
         }
 
         .philosopher-dot {
-            width: 18px;
-            height: 18px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: var(--shadow);
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
             flex-shrink: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
@@ -463,96 +493,126 @@
         .philosopher-dot.stoic { background: var(--stoic); }
         .philosopher-dot.head { 
             background: var(--head);
-            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2), var(--shadow);
+            box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.2), var(--shadow-lg);
         }
 
         .philosopher:hover .philosopher-dot {
-            transform: scale(1.3);
-            box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.1), var(--shadow-lg);
+            transform: scale(1.4);
+            box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.05), var(--shadow-xl);
         }
 
         .philosopher-info {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: var(--shadow);
+            border: 1px solid rgba(107, 128, 101, 0.1);
+            border-radius: var(--border-radius);
+            padding: 16px 20px;
+            box-shadow: var(--shadow-lg);
             opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
+            backdrop-filter: blur(10px);
         }
 
         .philosopher:hover .philosopher-info {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .philosopher-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary-text);
-            margin-bottom: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            font-family: 'Crimson Text', serif;
         }
 
         .philosopher-dates {
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-            margin-bottom: 4px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 500;
         }
 
         .philosopher-role {
             font-size: 0.75rem;
-            color: var(--accent-text);
-            font-weight: 500;
+            color: var(--text-tertiary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Positioned chronologically */
-        .philosopher[data-name="socrates"] { top: 100px; }
-        .philosopher[data-name="plato"] { top: 160px; }
-        .philosopher[data-name="diogenes-sinope"] { top: 200px; }
-        .philosopher[data-name="aristotle"] { top: 240px; }
-        .philosopher[data-name="epicurus"] { top: 280px; }
-        .philosopher[data-name="zeno"] { top: 340px; }
-        .philosopher[data-name="cleanthes"] { top: 400px; }
-        .philosopher[data-name="chrysippus"] { top: 460px; }
-        .philosopher[data-name="diogenes-babylon"] { top: 520px; }
-        .philosopher[data-name="antipater"] { top: 580px; }
-        .philosopher[data-name="panaetius"] { top: 640px; }
-        .philosopher[data-name="posidonius"] { top: 700px; }
-        .philosopher[data-name="cicero"] { top: 720px; }
-        .philosopher[data-name="seneca"] { top: 800px; }
-        .philosopher[data-name="musonius"] { top: 860px; }
-        .philosopher[data-name="plutarch"] { top: 920px; }
-        .philosopher[data-name="epictetus"] { top: 980px; }
-        .philosopher[data-name="hierocles"] { top: 1020px; }
-        .philosopher[data-name="sextus"] { top: 1080px; }
-        .philosopher[data-name="marcus"] { top: 1140px; }
-        .philosopher[data-name="galen"] { top: 1200px; }
+        /* Year marker positions - every 50 years from 500 BCE to 300 CE */
+        .year-marker[data-year="500-bce"] { top: 5%; }
+        .year-marker[data-year="450-bce"] { top: 11%; }
+        .year-marker[data-year="400-bce"] { top: 17%; }
+        .year-marker[data-year="350-bce"] { top: 23%; }
+        .year-marker[data-year="300-bce"] { top: 29%; }
+        .year-marker[data-year="250-bce"] { top: 35%; }
+        .year-marker[data-year="200-bce"] { top: 41%; }
+        .year-marker[data-year="150-bce"] { top: 47%; }
+        .year-marker[data-year="100-bce"] { top: 53%; }
+        .year-marker[data-year="50-bce"] { top: 59%; }
+        .year-marker[data-year="1-ce"] { top: 65%; }
+        .year-marker[data-year="50-ce"] { top: 71%; }
+        .year-marker[data-year="100-ce"] { top: 77%; }
+        .year-marker[data-year="150-ce"] { top: 83%; }
+        .year-marker[data-year="200-ce"] { top: 89%; }
+        .year-marker[data-year="250-ce"] { top: 95%; }
+        .year-marker[data-year="300-ce"] { top: 100%; }
 
-        /* Year markers positioned on LEFT */
-        .year-marker[data-year="500-bce"] { top: 80px; }
-        .year-marker[data-year="300-bce"] { top: 320px; }
-        .year-marker[data-year="1-ce"] { top: 780px; }
-        .year-marker[data-year="200-ce"] { top: 1120px; }
+        /* Philosopher positions - chronologically distributed */
+        .philosopher[data-name="socrates"] { top: 8%; }
+        .philosopher[data-name="plato"] { top: 12%; }
+        .philosopher[data-name="diogenes-sinope"] { top: 14%; }
+        .philosopher[data-name="aristotle"] { top: 16%; }
+        .philosopher[data-name="epicurus"] { top: 18%; }
+        .philosopher[data-name="zeno"] { top: 25%; }
+        .philosopher[data-name="cleanthes"] { top: 30%; }
+        .philosopher[data-name="chrysippus"] { top: 35%; }
+        .philosopher[data-name="diogenes-babylon"] { top: 40%; }
+        .philosopher[data-name="antipater"] { top: 45%; }
+        .philosopher[data-name="panaetius"] { top: 50%; }
+        .philosopher[data-name="posidonius"] { top: 55%; }
+        .philosopher[data-name="cicero"] { top: 58%; }
+        .philosopher[data-name="seneca"] { top: 68%; }
+        .philosopher[data-name="musonius"] { top: 72%; }
+        .philosopher[data-name="plutarch"] { top: 76%; }
+        .philosopher[data-name="epictetus"] { top: 78%; }
+        .philosopher[data-name="hierocles"] { top: 80%; }
+        .philosopher[data-name="sextus"] { top: 85%; }
+        .philosopher[data-name="marcus"] { top: 82%; }
+        .philosopher[data-name="galen"] { top: 88%; }
 
-        /* List View */
+        /* List View - Enhanced */
         .list-view {
             display: none;
-            padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 60px);
+            padding: clamp(60px, 8vw, 120px) clamp(30px, 6vw, 80px);
+            background: var(--background);
         }
 
         .period-section {
-            margin-bottom: 80px;
+            margin-bottom: 100px;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .period-section.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
         }
 
         .period-header {
             display: flex;
             align-items: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid;
-            gap: 20px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid;
+            gap: 30px;
         }
 
         .period-section.early .period-header { border-color: var(--early-stoic); }
@@ -560,16 +620,17 @@
         .period-section.late .period-header { border-color: var(--late-stoic); }
 
         .period-icon {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            font-size: 1.4rem;
+            font-weight: 800;
+            font-size: 1.8rem;
             flex-shrink: 0;
+            box-shadow: var(--shadow-lg);
         }
 
         .period-section.early .period-icon { background: var(--early-stoic); }
@@ -577,38 +638,57 @@
         .period-section.late .period-icon { background: var(--late-stoic); }
 
         .period-info h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.2rem, 5vw, 3rem);
             font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary-text);
+            margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
         .period-description {
-            color: var(--secondary-text);
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 500;
         }
 
         .philosophers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
         }
 
         .philosopher-card {
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(107, 128, 101, 0.1);
             border-radius: var(--border-radius-lg);
-            padding: 24px;
-            transition: all 0.3s ease;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            border-left: 4px solid;
+            border-left: 6px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosopher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(107, 128, 101, 0.02) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .philosopher-card:hover::before {
+            opacity: 1;
         }
 
         .philosopher-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-text);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--text-primary);
         }
 
         .philosopher-card.influence { border-left-color: var(--influence); }
@@ -618,21 +698,24 @@
         .card-header {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 16px;
-            gap: 16px;
+            margin-bottom: 20px;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .card-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.4rem;
             flex-shrink: 0;
+            box-shadow: var(--shadow);
         }
 
         .card-avatar.influence { background: var(--influence); }
@@ -645,52 +728,58 @@
         }
 
         .card-name {
-            font-size: 1.3rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--primary-text);
+            margin-bottom: 6px;
+            color: var(--text-primary);
         }
 
         .card-dates {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
         }
 
         .card-role {
-            background: rgba(26, 26, 26, 0.1);
-            padding: 4px 10px;
+            background: rgba(107, 128, 101, 0.1);
+            padding: 6px 14px;
             border-radius: 50px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-text);
+            letter-spacing: 0.5px;
+            color: var(--text-tertiary);
             align-self: flex-start;
         }
 
         .card-description {
-            color: var(--secondary-text);
-            line-height: 1.6;
-            margin-bottom: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .learn-more {
-            color: var(--forest-green);
-            font-weight: 600;
-            font-size: 0.9rem;
+            color: var(--sage-medium);
+            font-weight: 700;
+            font-size: 1rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .learn-more:hover {
-            gap: 10px;
+            gap: 12px;
+            color: var(--forest-dark);
         }
 
-        /* Modal */
+        /* Modal - Enhanced */
         .modal {
             display: none;
             position: fixed;
@@ -698,11 +787,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(26, 46, 25, 0.6);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         .modal.show {
@@ -711,14 +800,14 @@
 
         .modal-content {
             background: var(--surface);
-            margin: 5% auto;
+            margin: 3% auto;
             border-radius: var(--border-radius-lg);
-            width: min(90%, 800px);
-            max-height: 85vh;
+            width: min(95%, 900px);
+            max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-xl);
-            transform: translateY(30px) scale(0.95);
-            transition: all 0.3s ease;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .modal.show .modal-content {
@@ -726,31 +815,31 @@
         }
 
         .modal-header {
-            padding: 30px 30px 20px;
-            border-bottom: 1px solid var(--border);
+            padding: 40px 40px 30px;
+            border-bottom: 1px solid rgba(107, 128, 101, 0.1);
             position: relative;
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: flex-start;
         }
 
         .modal-image {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: var(--border-radius);
             object-fit: cover;
-            border: 2px solid var(--border);
+            border: 3px solid rgba(107, 128, 101, 0.1);
             flex-shrink: 0;
         }
 
         .modal-image.placeholder {
-            background: var(--influence);
+            background: var(--sage-medium);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
         }
 
         .modal-text {
@@ -759,180 +848,153 @@
 
         .modal-type {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
         }
 
         .modal-type.influence {
-            background: rgba(148, 163, 184, 0.2);
+            background: rgba(196, 155, 97, 0.2);
             color: var(--influence);
         }
 
         .modal-type.stoic {
-            background: rgba(220, 38, 38, 0.2);
+            background: rgba(107, 128, 101, 0.2);
             color: var(--stoic);
         }
 
         .modal-type.head {
-            background: rgba(245, 158, 11, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             color: var(--head);
         }
 
         .modal-title {
-            font-size: 2rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary-text);
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
 
         .modal-dates {
-            color: var(--secondary-text);
-            font-size: 1.1rem;
-            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
-            color: var(--accent-text);
+            color: var(--text-tertiary);
             transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-close:hover {
-            color: var(--primary-text);
+            color: var(--text-primary);
+            background: rgba(107, 128, 101, 0.1);
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 40px;
         }
 
         .modal-section {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .modal-section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--primary-text);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-family: 'Crimson Text', serif;
         }
 
         .modal-section p {
-            color: var(--secondary-text);
-            line-height: 1.7;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
         .wikipedia-section {
-            background: var(--subtle-border);
-            padding: 20px;
+            background: var(--background);
+            padding: 25px;
             border-radius: var(--border-radius);
-            border-left: 4px solid var(--sage-green);
-            margin-bottom: 24px;
+            border-left: 5px solid var(--sage-medium);
+            margin-bottom: 30px;
         }
 
         .wikipedia-section h3 {
-            color: var(--sage-green);
+            color: var(--sage-medium);
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .wikipedia-text {
-            color: var(--secondary-text);
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .wikipedia-link a {
-            color: var(--sage-green);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .wikipedia-link a:hover {
-            text-decoration: underline;
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .works-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .work-tag {
-            background: var(--border);
-            padding: 6px 12px;
+            background: rgba(107, 128, 101, 0.1);
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
         }
 
         .connections-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .connection-item {
-            background: var(--subtle-border);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            background: var(--background);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
         }
 
         .connection-type {
-            font-weight: 600;
-            color: var(--primary-text);
-        }
-
-        .loading {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--secondary-text);
-        }
-
-        .spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid var(--border);
-            border-top: 2px solid var(--primary-text);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .filtered-out {
-            opacity: 0.3;
+            opacity: 0.2;
             pointer-events: none;
+            transform: scale(0.95);
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .navigation {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 15px;
-                padding: 20px 15px;
+                gap: 20px;
+                padding: 30px 20px;
             }
 
             .search-container {
@@ -944,22 +1006,21 @@
             }
 
             .timeline-view {
-                padding: 40px 15px;
+                padding: 50px 20px;
             }
 
             .timeline-wrapper {
-                padding: 20px 40px;
+                padding: 30px 60px;
+                height: 1200px;
             }
 
             .timeline-line {
-                width: 3px;
+                width: 4px;
             }
 
-            /* Adjust spacing for mobile */
             .year-marker {
-                margin-right: 20px;
                 padding: 6px 12px;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
 
             .year-marker.major {
@@ -967,131 +1028,51 @@
                 font-size: 0.85rem;
             }
 
-            .year-marker::after {
-                width: 12px;
-                right: -12px;
-            }
-
-            .year-marker.major::after {
-                width: 16px;
-                right: -16px;
-            }
-
             .period-label {
-                margin-left: 20px;
-                min-width: 160px;
-                padding: 12px 16px;
-                font-size: 0.85rem;
-            }
-
-            .period-label::before {
-                width: 12px;
-                left: -12px;
+                right: 15px;
+                min-width: 180px;
+                padding: 18px 24px;
+                font-size: 0.9rem;
             }
 
             .philosopher.left {
-                margin-right: 15px;
+                margin-right: 50px;
             }
 
             .philosopher.right {
-                margin-left: 15px;
+                margin-left: 50px;
             }
 
             .philosopher-content {
-                max-width: 200px;
+                max-width: 220px;
             }
 
             .philosopher-dot {
-                width: 16px;
-                height: 16px;
-                border: 2px solid white;
-            }
-
-            .philosopher-info {
-                padding: 8px;
-            }
-
-            .philosopher-name {
-                font-size: 0.8rem;
-            }
-
-            .philosopher-dates {
-                font-size: 0.7rem;
-            }
-
-            .philosopher-role {
-                font-size: 0.65rem;
+                width: 20px;
+                height: 20px;
+                border: 3px solid white;
             }
 
             .modal-content {
                 width: 95%;
-                margin: 10% auto;
+                margin: 5% auto;
             }
 
             .modal-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
+                gap: 20px;
+                padding: 30px 25px 25px;
             }
 
             .philosophers-grid {
                 grid-template-columns: 1fr;
             }
 
-            .card-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-            }
-
             .period-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .timeline-wrapper {
-                padding: 20px 30px;
-            }
-
-            .year-marker {
-                margin-right: 15px;
-                padding: 4px 8px;
-                font-size: 0.75rem;
-            }
-
-            .year-marker.major {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-
-            .period-label {
-                margin-left: 15px;
-                min-width: 140px;
-                padding: 10px 12px;
-                font-size: 0.8rem;
-            }
-
-            .philosopher-content {
-                max-width: 160px;
-            }
-
-            .philosopher-info {
-                padding: 6px;
-            }
-
-            .philosopher-name {
-                font-size: 0.75rem;
-            }
-
-            .philosopher-dates {
-                font-size: 0.65rem;
-            }
-
-            .philosopher-role {
-                font-size: 0.6rem;
+                gap: 20px;
             }
         }
 
@@ -1099,9 +1080,9 @@
         @media (hover: none) and (pointer: coarse) {
             .philosopher-info {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
                 position: relative;
-                margin-top: 8px;
+                margin-top: 12px;
             }
 
             .philosopher-content {
@@ -1123,7 +1104,7 @@
         <div class="hero">
             <div class="hero-content">
                 <h1>The Stoic Philosophy Timeline</h1>
-                <p class="hero-subtitle">A journey through 770 years of philosophical wisdom, from ancient Athens to imperial Rome</p>
+                <p class="hero-subtitle">A journey through eight centuries of philosophical wisdom, from ancient Athens to imperial Rome</p>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">24</span>
@@ -1134,7 +1115,7 @@
                         <span class="stat-label">Heads of Stoa</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">770</span>
+                        <span class="stat-number">800</span>
                         <span class="stat-label">Years</span>
                     </div>
                 </div>
@@ -1144,10 +1125,10 @@
         <!-- Navigation -->
         <div class="navigation">
             <button class="nav-button active" data-view="timeline">
-                <span>📊</span> Timeline View
+                <span>⏳</span> Timeline View
             </button>
             <button class="nav-button" data-view="list">
-                <span>📚</span> Detailed View
+                <span>📖</span> Detailed View
             </button>
             <div class="search-container">
                 <div class="search-icon">🔍</div>
@@ -1158,8 +1139,8 @@
         <!-- Filters -->
         <div class="filters">
             <span class="filter-label">Filter by:</span>
-            <button class="filter-pill active" data-filter="all">All</button>
-            <button class="filter-pill" data-filter="stoic">Stoics</button>
+            <button class="filter-pill active" data-filter="all">All Periods</button>
+            <button class="filter-pill" data-filter="stoic">Stoics Only</button>
             <button class="filter-pill" data-filter="head">Heads of Stoa</button>
             <button class="filter-pill" data-filter="influence">Influences</button>
         </div>
@@ -1183,32 +1164,45 @@
         <!-- Timeline View -->
         <div class="timeline-view" id="timelineView">
             <div class="timeline-container">
-                <div class="timeline-wrapper" style="height: 1300px;">
+                <div class="timeline-wrapper">
                     <!-- Main timeline line -->
                     <div class="timeline-line"></div>
 
-                    <!-- Year markers -->
+                    <!-- Year markers - every 50 years -->
                     <div class="year-marker major" data-year="500-bce">500 BCE</div>
+                    <div class="year-marker" data-year="450-bce">450 BCE</div>
+                    <div class="year-marker" data-year="400-bce">400 BCE</div>
+                    <div class="year-marker" data-year="350-bce">350 BCE</div>
                     <div class="year-marker major" data-year="300-bce">300 BCE</div>
+                    <div class="year-marker" data-year="250-bce">250 BCE</div>
+                    <div class="year-marker" data-year="200-bce">200 BCE</div>
+                    <div class="year-marker" data-year="150-bce">150 BCE</div>
+                    <div class="year-marker" data-year="100-bce">100 BCE</div>
+                    <div class="year-marker" data-year="50-bce">50 BCE</div>
                     <div class="year-marker major" data-year="1-ce">1 CE</div>
-                    <div class="year-marker major" data-year="200-ce">200 CE</div>
+                    <div class="year-marker" data-year="50-ce">50 CE</div>
+                    <div class="year-marker" data-year="100-ce">100 CE</div>
+                    <div class="year-marker" data-year="150-ce">150 CE</div>
+                    <div class="year-marker" data-year="200-ce">200 CE</div>
+                    <div class="year-marker" data-year="250-ce">250 CE</div>
+                    <div class="year-marker major" data-year="300-ce">300 CE</div>
 
                     <!-- Period labels -->
-                    <div class="period-label early">
-                        <div>Early Stoa</div>
+                    <div class="period-label early" data-period="early">
+                        <div class="period-title">Early Stoa</div>
                         <div class="period-subtitle">300-150 BCE</div>
                     </div>
-                    <div class="period-label middle">
-                        <div>Middle Stoa</div>
+                    <div class="period-label middle" data-period="middle">
+                        <div class="period-title">Middle Stoa</div>
                         <div class="period-subtitle">150-55 BCE</div>
                     </div>
-                    <div class="period-label late">
-                        <div>Late Stoa</div>
+                    <div class="period-label late" data-period="late">
+                        <div class="period-title">Late Stoa</div>
                         <div class="period-subtitle">55 BCE-300 CE</div>
                     </div>
 
                     <!-- Philosophers -->
-                    <div class="philosopher left influence" data-name="socrates" data-wikipedia="Socrates">
+                    <div class="philosopher left influence" data-name="socrates" data-wikipedia="Socrates" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1219,7 +1213,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right influence" data-name="plato" data-wikipedia="Plato">
+                    <div class="philosopher right influence" data-name="plato" data-wikipedia="Plato" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1230,18 +1224,18 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left influence" data-name="diogenes-sinope" data-wikipedia="Diogenes">
+                    <div class="philosopher left influence" data-name="diogenes-sinope" data-wikipedia="Diogenes" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
-                                <div class="philosopher-name">Diogenes</div>
+                                <div class="philosopher-name">Diogenes of Sinope</div>
                                 <div class="philosopher-dates">412-323 BCE</div>
                                 <div class="philosopher-role">Cynic</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="philosopher right influence" data-name="aristotle" data-wikipedia="Aristotle">
+                    <div class="philosopher right influence" data-name="aristotle" data-wikipedia="Aristotle" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1252,7 +1246,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left influence" data-name="epicurus" data-wikipedia="Epicurus">
+                    <div class="philosopher left influence" data-name="epicurus" data-wikipedia="Epicurus" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1263,7 +1257,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right head" data-name="zeno" data-wikipedia="Zeno_of_Citium">
+                    <div class="philosopher right head" data-name="zeno" data-wikipedia="Zeno_of_Citium" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
@@ -1274,7 +1268,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left head" data-name="cleanthes" data-wikipedia="Cleanthes">
+                    <div class="philosopher left head" data-name="cleanthes" data-wikipedia="Cleanthes" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
@@ -1285,7 +1279,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right head" data-name="chrysippus" data-wikipedia="Chrysippus">
+                    <div class="philosopher right head" data-name="chrysippus" data-wikipedia="Chrysippus" data-period="early">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
@@ -1296,7 +1290,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left head" data-name="diogenes-babylon" data-wikipedia="Diogenes_of_Babylon">
+                    <div class="philosopher left head" data-name="diogenes-babylon" data-wikipedia="Diogenes_of_Babylon" data-period="middle">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
@@ -1307,18 +1301,18 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right head" data-name="antipater" data-wikipedia="Antipater_of_Tarsus">
+                    <div class="philosopher right head" data-name="antipater" data-wikipedia="Antipater_of_Tarsus" data-period="middle">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
-                                <div class="philosopher-name">Antipater</div>
+                                <div class="philosopher-name">Antipater of Tarsus</div>
                                 <div class="philosopher-dates">2nd century BCE</div>
                                 <div class="philosopher-role">Bridge</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="philosopher left head" data-name="panaetius" data-wikipedia="Panaetius">
+                    <div class="philosopher left head" data-name="panaetius" data-wikipedia="Panaetius" data-period="middle">
                         <div class="philosopher-content">
                             <div class="philosopher-dot head"></div>
                             <div class="philosopher-info">
@@ -1329,7 +1323,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right stoic" data-name="posidonius" data-wikipedia="Posidonius">
+                    <div class="philosopher right stoic" data-name="posidonius" data-wikipedia="Posidonius" data-period="middle">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1340,7 +1334,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left influence" data-name="cicero" data-wikipedia="Cicero">
+                    <div class="philosopher left influence" data-name="cicero" data-wikipedia="Cicero" data-period="middle">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1351,7 +1345,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right stoic" data-name="seneca" data-wikipedia="Seneca_the_Younger">
+                    <div class="philosopher right stoic" data-name="seneca" data-wikipedia="Seneca_the_Younger" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1362,7 +1356,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left stoic" data-name="musonius" data-wikipedia="Musonius_Rufus">
+                    <div class="philosopher left stoic" data-name="musonius" data-wikipedia="Musonius_Rufus" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1373,7 +1367,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right influence" data-name="plutarch" data-wikipedia="Plutarch">
+                    <div class="philosopher right influence" data-name="plutarch" data-wikipedia="Plutarch" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1384,7 +1378,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left stoic" data-name="epictetus" data-wikipedia="Epictetus">
+                    <div class="philosopher left stoic" data-name="epictetus" data-wikipedia="Epictetus" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1395,7 +1389,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right stoic" data-name="hierocles" data-wikipedia="Hierocles_of_Alexandria">
+                    <div class="philosopher right stoic" data-name="hierocles" data-wikipedia="Hierocles_of_Alexandria" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1406,7 +1400,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left influence" data-name="sextus" data-wikipedia="Sextus_Empiricus">
+                    <div class="philosopher left influence" data-name="sextus" data-wikipedia="Sextus_Empiricus" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1417,7 +1411,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher right stoic" data-name="marcus" data-wikipedia="Marcus_Aurelius">
+                    <div class="philosopher right stoic" data-name="marcus" data-wikipedia="Marcus_Aurelius" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot stoic"></div>
                             <div class="philosopher-info">
@@ -1428,7 +1422,7 @@
                         </div>
                     </div>
 
-                    <div class="philosopher left influence" data-name="galen" data-wikipedia="Galen">
+                    <div class="philosopher left influence" data-name="galen" data-wikipedia="Galen" data-period="late">
                         <div class="philosopher-content">
                             <div class="philosopher-dot influence"></div>
                             <div class="philosopher-info">
@@ -1445,7 +1439,7 @@
         <!-- List View -->
         <div class="list-view" id="listView">
             <!-- Early Stoa -->
-            <div class="period-section early">
+            <div class="period-section early" data-period="early">
                 <div class="period-header">
                     <div class="period-icon">I</div>
                     <div class="period-info">
@@ -1467,6 +1461,58 @@
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
 
+                    <div class="philosopher-card influence" data-category="influence" data-name="plato" data-wikipedia="Plato">
+                        <div class="card-header">
+                            <div class="card-avatar influence">Pl</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Plato</h3>
+                                <div class="card-dates">c. 428-348 BCE</div>
+                            </div>
+                            <div class="card-role">Academy</div>
+                        </div>
+                        <p class="card-description">Student of Socrates who founded the Academy. His theory of Forms and virtue ethics influenced Stoic philosophy.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="diogenes-sinope" data-wikipedia="Diogenes">
+                        <div class="card-header">
+                            <div class="card-avatar influence">D</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Diogenes of Sinope</h3>
+                                <div class="card-dates">c. 412-323 BCE</div>
+                            </div>
+                            <div class="card-role">Cynic</div>
+                        </div>
+                        <p class="card-description">Founder of Cynicism whose philosophy of living according to nature directly influenced early Stoicism.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="aristotle" data-wikipedia="Aristotle">
+                        <div class="card-header">
+                            <div class="card-avatar influence">Ar</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Aristotle</h3>
+                                <div class="card-dates">384-322 BCE</div>
+                            </div>
+                            <div class="card-role">Logic</div>
+                        </div>
+                        <p class="card-description">Student of Plato who developed systematic logic and ethics, significantly influencing Stoic philosophy.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="epicurus" data-wikipedia="Epicurus">
+                        <div class="card-header">
+                            <div class="card-avatar influence">E</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Epicurus</h3>
+                                <div class="card-dates">c. 341-270 BCE</div>
+                            </div>
+                            <div class="card-role">Rival</div>
+                        </div>
+                        <p class="card-description">Founder of Epicureanism, the main philosophical rival to Stoicism, advocating pleasure as the highest good.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
                     <div class="philosopher-card head" data-category="head" data-name="zeno" data-wikipedia="Zeno_of_Citium">
                         <div class="card-header">
                             <div class="card-avatar head">Z</div>
@@ -1479,19 +1525,71 @@
                         <p class="card-description">Founder of Stoicism who established the school in Athens around 300 BCE. Combined Cynic ethics with academic philosophy to create systematic Stoic doctrine.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
+
+                    <div class="philosopher-card head" data-category="head" data-name="cleanthes" data-wikipedia="Cleanthes">
+                        <div class="card-header">
+                            <div class="card-avatar head">C</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Cleanthes</h3>
+                                <div class="card-dates">c. 331-232 BCE</div>
+                            </div>
+                            <div class="card-role">2nd Head</div>
+                        </div>
+                        <p class="card-description">Second head of the Stoa who developed Stoic physics and theology. Known for his devotional approach to philosophy and poetic writings.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card head" data-category="head" data-name="chrysippus" data-wikipedia="Chrysippus">
+                        <div class="card-header">
+                            <div class="card-avatar head">Ch</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Chrysippus</h3>
+                                <div class="card-dates">c. 280-207 BCE</div>
+                            </div>
+                            <div class="card-role">3rd Head</div>
+                        </div>
+                        <p class="card-description">Third head of the Stoa, considered the "second founder" of Stoicism. Systematized Stoic doctrine and wrote over 700 works defending Stoic philosophy.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Middle Stoa -->
-            <div class="period-section middle">
+            <div class="period-section middle" data-period="middle">
                 <div class="period-header">
                     <div class="period-icon">II</div>
                     <div class="period-info">
                         <h2>Middle Stoa</h2>
-                        <div class="period-description">150-55 BCE • Roman Integration</div>
+                        <div class="period-description">150-55 BCE • Roman Integration & Adaptation</div>
                     </div>
                 </div>
                 <div class="philosophers-grid">
+                    <div class="philosopher-card head" data-category="head" data-name="diogenes-babylon" data-wikipedia="Diogenes_of_Babylon">
+                        <div class="card-header">
+                            <div class="card-avatar head">DB</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Diogenes of Babylon</h3>
+                                <div class="card-dates">c. 240-152 BCE</div>
+                            </div>
+                            <div class="card-role">Head</div>
+                        </div>
+                        <p class="card-description">Stoic philosopher who led the famous Athenian embassy to Rome in 155 BCE, introducing Stoicism to Roman culture.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card head" data-category="head" data-name="antipater" data-wikipedia="Antipater_of_Tarsus">
+                        <div class="card-header">
+                            <div class="card-avatar head">A</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Antipater of Tarsus</h3>
+                                <div class="card-dates">2nd century BCE</div>
+                            </div>
+                            <div class="card-role">Head</div>
+                        </div>
+                        <p class="card-description">Head of the Stoa who bridged Early and Middle Stoicism, developing more nuanced views on emotions.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
                     <div class="philosopher-card head" data-category="head" data-name="panaetius" data-wikipedia="Panaetius">
                         <div class="card-header">
                             <div class="card-avatar head">P</div>
@@ -1501,22 +1599,126 @@
                             </div>
                             <div class="card-role">Head</div>
                         </div>
-                        <p class="card-description">Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture.</p>
+                        <p class="card-description">Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture and influenced Cicero.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="posidonius" data-wikipedia="Posidonius">
+                        <div class="card-header">
+                            <div class="card-avatar stoic">Po</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Posidonius</h3>
+                                <div class="card-dates">135-51 BCE</div>
+                            </div>
+                            <div class="card-role">Polymath</div>
+                        </div>
+                        <p class="card-description">Brilliant polymath who integrated scientific research with Stoic philosophy. Influenced both Cicero and later Roman Stoics.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="cicero" data-wikipedia="Cicero">
+                        <div class="card-header">
+                            <div class="card-avatar influence">Ci</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Cicero</h3>
+                                <div class="card-dates">106-43 BCE</div>
+                            </div>
+                            <div class="card-role">Eclectic</div>
+                        </div>
+                        <p class="card-description">Roman orator and philosopher who synthesized Greek philosophy for Roman audiences. Though not strictly Stoic, heavily influenced by Stoicism.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
                 </div>
             </div>
 
             <!-- Late Stoa -->
-            <div class="period-section late">
+            <div class="period-section late" data-period="late">
                 <div class="period-header">
                     <div class="period-icon">III</div>
                     <div class="period-info">
                         <h2>Late (Roman) Stoa</h2>
-                        <div class="period-description">55 BCE-300 CE • Imperial Practice</div>
+                        <div class="period-description">55 BCE-300 CE • Imperial Practice & Personal Ethics</div>
                     </div>
                 </div>
                 <div class="philosophers-grid">
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="seneca" data-wikipedia="Seneca_the_Younger">
+                        <div class="card-header">
+                            <div class="card-avatar stoic">Se</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Seneca</h3>
+                                <div class="card-dates">4 BCE-65 CE</div>
+                            </div>
+                            <div class="card-role">Statesman</div>
+                        </div>
+                        <p class="card-description">Roman statesman, playwright, and Stoic philosopher. Advisor to Emperor Nero and one of the most influential Stoic writers.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="musonius" data-wikipedia="Musonius_Rufus">
+                        <div class="card-header">
+                            <div class="card-avatar stoic">M</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Musonius Rufus</h3>
+                                <div class="card-dates">30-100 CE</div>
+                            </div>
+                            <div class="card-role">Teacher</div>
+                        </div>
+                        <p class="card-description">Known as the "Roman Socrates" for his emphasis on practical philosophy and moral character. Teacher of Epictetus.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="plutarch" data-wikipedia="Plutarch">
+                        <div class="card-header">
+                            <div class="card-avatar influence">Pu</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Plutarch</h3>
+                                <div class="card-dates">46-120 CE</div>
+                            </div>
+                            <div class="card-role">Critic</div>
+                        </div>
+                        <p class="card-description">Platonist philosopher and biographer who critiqued Stoic philosophy, helping to clarify Stoic positions through criticism.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="epictetus" data-wikipedia="Epictetus">
+                        <div class="card-header">
+                            <div class="card-avatar stoic">Ep</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Epictetus</h3>
+                                <div class="card-dates">c. 50-135 CE</div>
+                            </div>
+                            <div class="card-role">Teacher</div>
+                        </div>
+                        <p class="card-description">Former slave who became one of the greatest Stoic teachers. His teachings focus on practical ethics and the dichotomy of control.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card stoic" data-category="stoic" data-name="hierocles" data-wikipedia="Hierocles_of_Alexandria">
+                        <div class="card-header">
+                            <div class="card-avatar stoic">H</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Hierocles</h3>
+                                <div class="card-dates">2nd century CE</div>
+                            </div>
+                            <div class="card-role">Ethics</div>
+                        </div>
+                        <p class="card-description">Stoic philosopher known for his theory of "circles of concern" and practical ethical teachings.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="sextus" data-wikipedia="Sextus_Empiricus">
+                        <div class="card-header">
+                            <div class="card-avatar influence">Sx</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Sextus Empiricus</h3>
+                                <div class="card-dates">160-210 CE</div>
+                            </div>
+                            <div class="card-role">Skeptic</div>
+                        </div>
+                        <p class="card-description">Pyrrhonian skeptic who wrote detailed critiques of Stoic logic and epistemology, preserving many Stoic arguments.</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
                     <div class="philosopher-card stoic" data-category="stoic" data-name="marcus" data-wikipedia="Marcus_Aurelius">
                         <div class="card-header">
                             <div class="card-avatar stoic">MA</div>
@@ -1526,7 +1728,20 @@
                             </div>
                             <div class="card-role">Emperor</div>
                         </div>
-                        <p class="card-description">Roman Emperor and Stoic philosopher, author of the "Meditations."</p>
+                        <p class="card-description">Roman Emperor and Stoic philosopher, one of the "Five Good Emperors." His personal journal became the "Meditations."</p>
+                        <a href="#" class="learn-more">Learn more →</a>
+                    </div>
+
+                    <div class="philosopher-card influence" data-category="influence" data-name="galen" data-wikipedia="Galen">
+                        <div class="card-header">
+                            <div class="card-avatar influence">G</div>
+                            <div class="card-info">
+                                <h3 class="card-name">Galen</h3>
+                                <div class="card-dates">129-216 CE</div>
+                            </div>
+                            <div class="card-role">Medical Critic</div>
+                        </div>
+                        <p class="card-description">Physician and philosopher who critiqued Stoic psychology from a medical perspective, challenging Stoic theories.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
                 </div>
@@ -1554,15 +1769,16 @@
     </div>
 
     <script>
-        // Same philosopher data as before
+        // Enhanced philosopher data
         const philosopherData = {
             'socrates': {
                 name: 'Socrates',
                 dates: 'c. 470-399 BCE',
                 type: 'influence',
                 typeLabel: 'Foundational Influence',
+                period: 'early',
                 description: 'The foundational figure whose teachings on virtue and the examined life profoundly influenced all subsequent philosophical schools, including Stoicism.',
-                contributions: 'Developed the Socratic method of questioning, established virtue ethics as a philosophical framework, and promoted moral intellectualism.',
+                contributions: 'Developed the Socratic method of questioning, established virtue ethics as a philosophical framework, and promoted moral intellectualism. His emphasis on self-examination became central to Stoic practice.',
                 works: ['Socratic Dialogues (recorded by Plato)', 'Apology (via Plato)', 'Crito (via Plato)'],
                 connections: [
                     'Students: Plato, Antisthenes (founder of Cynicism)',
@@ -1570,11 +1786,72 @@
                     'Method: Socratic questioning adopted by Stoics for self-examination'
                 ]
             },
+            'plato': {
+                name: 'Plato',
+                dates: 'c. 428-348 BCE',
+                type: 'influence',
+                typeLabel: 'Philosophical Influence',
+                period: 'early',
+                description: 'Student of Socrates who founded the Academy. His theory of Forms and virtue ethics influenced Stoic philosophy.',
+                contributions: 'Founded the Academy, developed theory of Forms, and influenced Stoic metaphysics through his systematic approach to philosophy.',
+                works: ['The Republic', 'Phaedo', 'Apology', 'Laws'],
+                connections: [
+                    'Teacher: Socrates',
+                    'Student: Aristotle',
+                    'Influence: Systematic philosophy adopted by Stoics'
+                ]
+            },
+            'diogenes-sinope': {
+                name: 'Diogenes of Sinope',
+                dates: 'c. 412-323 BCE',
+                type: 'influence',
+                typeLabel: 'Cynic Influence',
+                period: 'early',
+                description: 'Founder of Cynicism whose philosophy of living according to nature directly influenced early Stoicism.',
+                contributions: 'Developed Cynic philosophy emphasizing virtue and self-sufficiency. His radical lifestyle influenced Stoic ethics.',
+                works: ['Letters (attributed)', 'Dialogues (lost)'],
+                connections: [
+                    'School: Founder of Cynicism',
+                    'Student: Crates of Thebes (teacher of Zeno)',
+                    'Legacy: Cynic ethics incorporated into Stoicism'
+                ]
+            },
+            'aristotle': {
+                name: 'Aristotle',
+                dates: '384-322 BCE',
+                type: 'influence',
+                typeLabel: 'Logical Influence',
+                period: 'early',
+                description: 'Student of Plato who developed systematic logic and ethics, significantly influencing Stoic philosophy.',
+                contributions: 'Created formal logic, systematic ethics, and natural philosophy. His logical methods were refined by Stoic logicians.',
+                works: ['Nicomachean Ethics', 'Politics', 'Organon', 'Metaphysics'],
+                connections: [
+                    'Teacher: Plato',
+                    'Influence: Logical methods adopted by Chrysippus',
+                    'Ethics: Virtue ethics framework used by Stoics'
+                ]
+            },
+            'epicurus': {
+                name: 'Epicurus',
+                dates: 'c. 341-270 BCE',
+                type: 'influence',
+                typeLabel: 'Rival School',
+                period: 'early',
+                description: 'Founder of Epicureanism, the main philosophical rival to Stoicism, advocating pleasure as the highest good.',
+                contributions: 'Founded Epicureanism, developed hedonistic ethics and atomistic physics. His "Garden" competed with the Stoic school.',
+                works: ['Letter to Menoeceus', 'Principal Doctrines', 'Letter to Herodotus'],
+                connections: [
+                    'School: Founded Epicureanism (rival to Stoicism)',
+                    'Opposition: Pleasure vs. virtue as highest good',
+                    'Influence: Stoics defined themselves against Epicurean ideas'
+                ]
+            },
             'zeno': {
                 name: 'Zeno of Citium',
                 dates: 'c. 334-262 BCE',
                 type: 'head',
                 typeLabel: 'Founder of Stoicism',
+                period: 'early',
                 description: 'Phoenician philosopher who founded Stoicism around 300 BCE in Athens after being shipwrecked and losing his fortune.',
                 contributions: 'Founded the Stoic school, established the four cardinal virtues, developed early Stoic physics and logic, and created the ideal of the sage.',
                 works: ['Republic', 'On the Nature of Man', 'On Emotions', 'On Ethics', 'On the Universe'],
@@ -1584,11 +1861,207 @@
                     'School: Founded Stoicism at the Stoa Poikile in Athens'
                 ]
             },
+            'cleanthes': {
+                name: 'Cleanthes',
+                dates: 'c. 331-232 BCE',
+                type: 'head',
+                typeLabel: 'Second Head of the Stoa',
+                period: 'early',
+                description: 'Second head of the Stoic school who developed Stoic theology and physics while working as a night laborer to fund his studies.',
+                contributions: 'Developed Stoic theology and cosmic theory, emphasized divine providence, and created religious poetry expressing Stoic beliefs.',
+                works: ['Hymn to Zeus', 'On Time', 'Physics', 'On the Gods'],
+                connections: [
+                    'Teacher: Zeno of Citium',
+                    'Student: Chrysippus of Soli',
+                    'Legacy: Developed theological aspects of Stoicism'
+                ]
+            },
+            'chrysippus': {
+                name: 'Chrysippus',
+                dates: 'c. 280-207 BCE',
+                type: 'head',
+                typeLabel: 'Third Head & Second Founder',
+                period: 'early',
+                description: 'Third head of the Stoa, often called the "second founder" of Stoicism. He systematized Stoic doctrine and wrote over 700 works.',
+                contributions: 'Systematized Stoic logic, developed compatibilist theory of free will, refined emotional theory, and defended Stoicism against critics.',
+                works: ['On Logic', 'On Emotions', 'Ethics', 'Physics', 'On Fate'],
+                connections: [
+                    'Teacher: Cleanthes of Assos',
+                    'Achievement: Wrote over 700 works (mostly lost)',
+                    'Legacy: Systematized all major Stoic doctrines'
+                ]
+            },
+            'diogenes-babylon': {
+                name: 'Diogenes of Babylon',
+                dates: 'c. 240-152 BCE',
+                type: 'head',
+                typeLabel: 'Head of the Stoa',
+                period: 'middle',
+                description: 'Stoic philosopher who led the famous Athenian embassy to Rome in 155 BCE, introducing Stoicism to Roman culture.',
+                contributions: 'Introduced Stoicism to Rome, developed rhetoric theory within Stoic framework, and influenced Roman intellectuals.',
+                works: ['On Music', 'Dialectical Art', 'On Voice', 'Rhetoric'],
+                connections: [
+                    'Mission: Led Athenian Embassy to Rome (155 BCE)',
+                    'Student: Antipater of Tarsus',
+                    'Legacy: Bridge between Greek and Roman Stoicism'
+                ]
+            },
+            'antipater': {
+                name: 'Antipater of Tarsus',
+                dates: '2nd century BCE',
+                type: 'head',
+                typeLabel: 'Head of the Stoa',
+                period: 'middle',
+                description: 'Head of the Stoa who bridged Early and Middle Stoicism, developing more nuanced views on emotions.',
+                contributions: 'Refined Stoic emotional theory, developed practical wisdom concepts, and trained the next generation of Stoic leaders.',
+                works: ['On Emotions', 'On Duties', 'Dialectical Works'],
+                connections: [
+                    'Teacher: Diogenes of Babylon',
+                    'Student: Panaetius of Rhodes',
+                    'Role: Bridged Early and Middle Stoicism'
+                ]
+            },
+            'panaetius': {
+                name: 'Panaetius',
+                dates: 'c. 185-109 BCE',
+                type: 'head',
+                typeLabel: 'Head of the Stoa',
+                period: 'middle',
+                description: 'Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture and influenced Cicero.',
+                contributions: 'Adapted Stoicism for Roman culture, influenced political theory, and emphasized human dignity and social responsibilities.',
+                works: ['On Duties', 'On Providence', 'On Philosophy'],
+                connections: [
+                    'Influenced: Cicero, Scipio Aemilianus',
+                    'Student: Posidonius of Apamea',
+                    'Role: Bridge to Roman Stoicism'
+                ]
+            },
+            'posidonius': {
+                name: 'Posidonius',
+                dates: '135-51 BCE',
+                type: 'stoic',
+                typeLabel: 'Stoic Polymath',
+                period: 'middle',
+                description: 'Brilliant polymath who integrated scientific research with Stoic philosophy, influencing both Cicero and later Roman Stoics.',
+                contributions: 'Advanced scientific methodology within Stoicism, developed geographical theories, and refined psychology.',
+                works: ['On the Ocean', 'Histories', 'On Emotions', 'Geography'],
+                connections: [
+                    'Teacher: Panaetius of Rhodes',
+                    'Students: Cicero, Pompey',
+                    'Legacy: Scientific approach to Stoicism'
+                ]
+            },
+            'cicero': {
+                name: 'Cicero',
+                dates: '106-43 BCE',
+                type: 'influence',
+                typeLabel: 'Academic Skeptic & Synthesizer',
+                period: 'middle',
+                description: 'Roman orator and politician who synthesized Greek philosophy for Roman audiences, heavily influenced by Stoicism.',
+                contributions: 'Popularized Greek philosophy in Rome, developed natural law theory, and preserved many Stoic teachings.',
+                works: ['De Officiis', 'Tusculan Disputations', 'De Finibus', 'De Natura Deorum'],
+                connections: [
+                    'Influenced by: Panaetius, Posidonius',
+                    'School: Academic Skepticism (eclectic)',
+                    'Legacy: Preserved and transmitted Stoic ideas'
+                ]
+            },
+            'seneca': {
+                name: 'Seneca',
+                dates: '4 BCE-65 CE',
+                type: 'stoic',
+                typeLabel: 'Roman Stoic Statesman',
+                period: 'late',
+                description: 'Roman statesman and Stoic philosopher who served as advisor to Emperor Nero. One of the most influential Stoic writers.',
+                contributions: 'Developed practical Stoic ethics for daily life, advanced emotional regulation theories, and created literary works expressing Stoic themes.',
+                works: ['Letters to Lucilius', 'On the Happy Life', 'On Anger', 'Medea', 'Phaedra'],
+                connections: [
+                    'Role: Advisor to Emperor Nero',
+                    'Student: Lucilius (correspondent)',
+                    'Death: Forced suicide by Nero (65 CE)'
+                ]
+            },
+            'musonius': {
+                name: 'Musonius Rufus',
+                dates: '30-100 CE',
+                type: 'stoic',
+                typeLabel: 'The Roman Socrates',
+                period: 'late',
+                description: 'Known as the "Roman Socrates" for his emphasis on practical philosophy and moral character. Teacher of Epictetus.',
+                contributions: 'Emphasized practical philosophy, advocated for gender equality in education, and developed Socratic teaching methods within Stoicism.',
+                works: ['Discourses', 'On Simple Living', 'Lectures'],
+                connections: [
+                    'Nickname: "The Roman Socrates"',
+                    'Student: Epictetus',
+                    'Focus: Practical ethics and simple living'
+                ]
+            },
+            'plutarch': {
+                name: 'Plutarch',
+                dates: '46-120 CE',
+                type: 'influence',
+                typeLabel: 'Platonist Critic',
+                period: 'late',
+                description: 'Platonist philosopher and biographer who critiqued Stoic philosophy, helping to clarify Stoic positions through criticism.',
+                contributions: 'Created biographical method combining history and moral philosophy, critiqued Stoic ethics and physics.',
+                works: ['Parallel Lives', 'Moralia', 'Against Colotes'],
+                connections: [
+                    'School: Platonist (Middle Platonism)',
+                    'Role: Critic of Stoicism',
+                    'Legacy: Preserved Stoic teachings through criticism'
+                ]
+            },
+            'epictetus': {
+                name: 'Epictetus',
+                dates: 'c. 50-135 CE',
+                type: 'stoic',
+                typeLabel: 'Stoic Teacher & Former Slave',
+                period: 'late',
+                description: 'Born a slave who became one of the greatest Stoic teachers. His teachings focus on practical ethics and the dichotomy of control.',
+                contributions: 'Developed the dichotomy of control, advanced theory of impressions and judgment, and created practical exercises for moral development.',
+                works: ['Discourses (4 books)', 'Enchiridion (Handbook)'],
+                connections: [
+                    'Teacher: Musonius Rufus',
+                    'Student: Arrian (recorded his teachings)',
+                    'Background: Born a slave, gained freedom through philosophy'
+                ]
+            },
+            'hierocles': {
+                name: 'Hierocles',
+                dates: 'early 2nd century CE',
+                type: 'stoic',
+                typeLabel: 'Stoic Ethicist',
+                period: 'late',
+                description: 'Stoic philosopher known for his theory of "circles of concern" and practical ethical teachings.',
+                contributions: 'Developed circles of concern theory, created practical ethical exercises, and advanced Stoic social theory.',
+                works: ['Elements of Ethics', 'On Duties', 'Ethical Lectures'],
+                connections: [
+                    'Theory: Circles of concern (oikeiosis)',
+                    'Focus: Social ethics and duty',
+                    'Legacy: Influenced later Stoic social thought'
+                ]
+            },
+            'sextus': {
+                name: 'Sextus Empiricus',
+                dates: '160-210 CE',
+                type: 'influence',
+                typeLabel: 'Skeptic Critic',
+                period: 'late',
+                description: 'Pyrrhonian skeptic who wrote detailed critiques of Stoic logic and epistemology, preserving many Stoic arguments.',
+                contributions: 'Developed Pyrrhonian skepticism, critiqued Stoic logic, and advanced skeptical methodology.',
+                works: ['Outlines of Pyrrhonism', 'Against the Mathematicians'],
+                connections: [
+                    'School: Pyrrhonian Skepticism',
+                    'Target: Stoic logic and epistemology',
+                    'Legacy: Preserved Stoic arguments through criticism'
+                ]
+            },
             'marcus': {
                 name: 'Marcus Aurelius',
                 dates: '121-180 CE',
                 type: 'stoic',
                 typeLabel: 'Philosopher-Emperor',
+                period: 'late',
                 description: 'Roman Emperor and Stoic philosopher, one of the "Five Good Emperors." His personal journal became the "Meditations."',
                 contributions: 'Applied Stoic principles to imperial leadership, developed cosmic perspective practices, and demonstrated Stoicism during plague and war.',
                 works: ['Meditations (personal journal)', 'Letters (mostly lost)'],
@@ -1598,24 +2071,24 @@
                     'Role: Roman Emperor (161-180 CE)'
                 ]
             },
-            'panaetius': {
-                name: 'Panaetius',
-                dates: 'c. 185-109 BCE',
-                type: 'head',
-                typeLabel: 'Head of the Stoa',
-                description: 'Leader of Middle Stoicism who adapted Stoic doctrine for Roman culture and influenced Cicero.',
-                contributions: 'Adapted Stoicism for Roman culture, influenced political theory, and emphasized human dignity and social responsibilities.',
-                works: ['On Duties', 'On Providence', 'On Philosophy'],
+            'galen': {
+                name: 'Galen',
+                dates: '129-216 CE',
+                type: 'influence',
+                typeLabel: 'Medical Critic',
+                period: 'late',
+                description: 'Physician and philosopher who critiqued Stoic psychology from a medical perspective, challenging Stoic theories.',
+                contributions: 'Advanced medical knowledge, critiqued Stoic psychology from medical perspective, developed alternative theories of emotions.',
+                works: ['On the Doctrines of Hippocrates and Plato', 'Medical works'],
                 connections: [
-                    'Influenced: Cicero, Scipio Aemilianus',
-                    'Student: Posidonius of Apamea',
-                    'Role: Bridge to Roman Stoicism'
+                    'Profession: Physician to emperors',
+                    'Critique: Stoic psychology and emotion theory',
+                    'Method: Medical approach to philosophical questions'
                 ]
             }
-            // Add other philosophers as needed
         };
 
-        // Same JavaScript functionality as before (abbreviated for space)
+        // Wikipedia API function
         async function fetchWikipediaData(title) {
             try {
                 const summaryResponse = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
@@ -1634,7 +2107,82 @@
             }
         }
 
-        // Modal and interaction code
+        // Enhanced filter functionality
+        function applyFilter(filter) {
+            const philosophers = document.querySelectorAll('.philosopher');
+            const philosopherCards = document.querySelectorAll('.philosopher-card');
+            const periodSections = document.querySelectorAll('.period-section');
+            const periodLabels = document.querySelectorAll('.period-label');
+
+            if (filter === 'stoic') {
+                // Show only Stoics and their periods
+                philosophers.forEach(philosopher => {
+                    const isStoricPhilosopher = philosopher.classList.contains('stoic') || philosopher.classList.contains('head');
+                    philosopher.classList.toggle('filtered-out', !isStoricPhilosopher);
+                });
+
+                philosopherCards.forEach(card => {
+                    const isStoricCard = card.dataset.category === 'stoic' || card.dataset.category === 'head';
+                    card.style.display = isStoricCard ? 'block' : 'none';
+                });
+
+                // Hide periods that don't have Stoic philosophers
+                periodSections.forEach(section => {
+                    const hasStorics = section.querySelector('.philosopher-card[data-category="stoic"], .philosopher-card[data-category="head"]');
+                    section.classList.toggle('hidden', !hasStorics);
+                });
+
+                periodLabels.forEach(label => {
+                    const period = label.dataset.period;
+                    const hasStoricsInPeriod = document.querySelector(`.philosopher[data-period="${period}"].stoic, .philosopher[data-period="${period}"].head`);
+                    label.style.opacity = hasStoricsInPeriod ? '1' : '0.3';
+                });
+
+            } else if (filter === 'all') {
+                // Show everything
+                philosophers.forEach(philosopher => {
+                    philosopher.classList.remove('filtered-out');
+                });
+
+                philosopherCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+
+                periodSections.forEach(section => {
+                    section.classList.remove('hidden');
+                });
+
+                periodLabels.forEach(label => {
+                    label.style.opacity = '1';
+                });
+
+            } else {
+                // Show specific category
+                philosophers.forEach(philosopher => {
+                    const isVisible = philosopher.classList.contains(filter);
+                    philosopher.classList.toggle('filtered-out', !isVisible);
+                });
+
+                philosopherCards.forEach(card => {
+                    const isVisible = card.dataset.category === filter;
+                    card.style.display = isVisible ? 'block' : 'none';
+                });
+
+                // Show all periods but dim those without the filtered category
+                periodSections.forEach(section => {
+                    const hasCategory = section.querySelector(`.philosopher-card[data-category="${filter}"]`);
+                    section.classList.toggle('hidden', !hasCategory);
+                });
+
+                periodLabels.forEach(label => {
+                    const period = label.dataset.period;
+                    const hasCategoryInPeriod = document.querySelector(`.philosopher[data-period="${period}"].${filter}`);
+                    label.style.opacity = hasCategoryInPeriod ? '1' : '0.3';
+                });
+            }
+        }
+
+        // Modal functionality
         const modal = document.getElementById('modal');
         const modalClose = document.getElementById('modalClose');
 
@@ -1647,9 +2195,81 @@
             document.getElementById('modalType').textContent = data.typeLabel;
             document.getElementById('modalType').className = `modal-type ${data.type}`;
 
+            // Reset image
+            const modalImage = document.getElementById('modalImage');
+            const modalImagePlaceholder = document.getElementById('modalImagePlaceholder');
+            modalImage.style.display = 'none';
+            modalImagePlaceholder.style.display = 'flex';
+            modalImagePlaceholder.textContent = data.name.charAt(0);
+
+            // Show modal content
+            document.getElementById('modalBody').innerHTML = `
+                <div class="wikipedia-section">
+                    <h3>📖 From Wikipedia</h3>
+                    <div class="wikipedia-text">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            Loading Wikipedia information...
+                        </div>
+                    </div>
+                    <div class="wikipedia-link" style="display: none;">
+                        <a href="#" target="_blank" rel="noopener noreferrer">Read more on Wikipedia →</a>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Historical Significance</h3>
+                    <p>${data.description}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Key Contributions</h3>
+                    <p>${data.contributions}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Major Works</h3>
+                    <div class="works-list">
+                        ${data.works.map(work => `<div class="work-tag">${work}</div>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Connections & Legacy</h3>
+                    <div class="connections-list">
+                        ${data.connections.map(connection => {
+                            const [type, ...rest] = connection.split(': ');
+                            return `<div class="connection-item"><span class="connection-type">${type}:</span> ${rest.join(': ')}</div>`;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
             modal.style.display = 'block';
             setTimeout(() => modal.classList.add('show'), 10);
             document.body.style.overflow = 'hidden';
+
+            // Fetch Wikipedia data
+            if (wikipediaTitle) {
+                fetchWikipediaData(wikipediaTitle).then(wikipediaData => {
+                    const wikipediaSection = document.querySelector('.wikipedia-section');
+                    const wikipediaText = wikipediaSection.querySelector('.wikipedia-text');
+                    const wikipediaLink = wikipediaSection.querySelector('.wikipedia-link');
+                    
+                    wikipediaText.innerHTML = wikipediaData.extract;
+                    wikipediaLink.style.display = 'block';
+                    wikipediaLink.querySelector('a').href = wikipediaData.wikipediaUrl;
+                    
+                    // Update image if available
+                    if (wikipediaData.imageUrl) {
+                        modalImage.src = wikipediaData.imageUrl;
+                        modalImage.onload = () => {
+                            modalImagePlaceholder.style.display = 'none';
+                            modalImage.style.display = 'block';
+                        };
+                    }
+                });
+            }
         }
 
         function hideModal() {
@@ -1695,26 +2315,151 @@
             });
         });
 
-        // Filter functionality
+        // Enhanced filter functionality with event listeners
         document.querySelectorAll('.filter-pill').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
                 
                 const filter = button.dataset.filter;
-                document.querySelectorAll('.philosopher').forEach(philosopher => {
-                    const isVisible = filter === 'all' || philosopher.classList.contains(filter);
-                    philosopher.classList.toggle('filtered-out', !isVisible);
-                });
+                applyFilter(filter);
             });
         });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm === '') {
+                // Reset to current filter when search is cleared
+                const activeFilter = document.querySelector('.filter-pill.active').dataset.filter;
+                applyFilter(activeFilter);
+                return;
+            }
+            
+            // Search timeline
+            document.querySelectorAll('.philosopher').forEach(philosopher => {
+                const name = philosopher.dataset.name;
+                const data = philosopherData[name];
+                const searchText = data ? `${data.name} ${data.description} ${data.contributions}`.toLowerCase() : '';
+                const isVisible = searchText.includes(searchTerm);
+                philosopher.classList.toggle('filtered-out', !isVisible);
+            });
+            
+            // Search list view
+            document.querySelectorAll('.philosopher-card').forEach(card => {
+                const name = card.dataset.name;
+                const data = philosopherData[name];
+                const cardText = card.textContent.toLowerCase();
+                const searchText = data ? `${data.name} ${data.description} ${data.contributions}`.toLowerCase() : cardText;
+                const isVisible = searchText.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+
+            // Show/hide period sections based on search results
+            document.querySelectorAll('.period-section').forEach(section => {
+                const hasVisibleCards = section.querySelector('.philosopher-card[style*="block"], .philosopher-card:not([style*="none"])');
+                section.classList.toggle('hidden', !hasVisibleCards);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                hideModal();
+            }
+        });
+
+        // Enhanced loading animations
+        function addLoadingAnimation() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .spinner {
+                    animation: spin 1s linear infinite;
+                }
+                
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+
+                .loading {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: var(--text-secondary);
+                }
+            `;
+            document.head.appendChild(style);
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('timelineView').style.display = 'block';
             document.getElementById('listView').style.display = 'none';
+            addLoadingAnimation();
+            
+            // Add smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Add intersection observer for timeline animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe philosopher elements for entrance animations
+            document.querySelectorAll('.philosopher, .philosopher-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
         });
+
+        // Add touch gestures for mobile
+        if ('ontouchstart' in window) {
+            let startX = 0;
+            let endX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        // Swipe left - switch to list view
+                        const listButton = document.querySelector('[data-view="list"]');
+                        if (!listButton.classList.contains('active')) {
+                            listButton.click();
+                        }
+                    } else {
+                        // Swipe right - switch to timeline view
+                        const timelineButton = document.querySelector('[data-view="timeline"]');
+                        if (!timelineButton.classList.contains('active')) {
+                            timelineButton.click();
+                        }
+                    }
+                }
+            }
+        }
     </script>
 </body>
 </html>
-                
